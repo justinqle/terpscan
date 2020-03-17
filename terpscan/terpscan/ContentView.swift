@@ -17,25 +17,35 @@ private let dateFormatter: DateFormatter = {
 
 struct ContentView: View {
     @Environment(\.managedObjectContext)
-    var viewContext   
- 
+    var viewContext
+    
+    @State var showingAddPackage = false
+    
     var body: some View {
         NavigationView {
             MasterView()
-                .navigationBarTitle(Text("Master"))
+                .navigationBarTitle(Text("Packages"))
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
                         action: {
-                            withAnimation { Event.create(in: self.viewContext) }
-                        }
-                    ) { 
+                            self.showingAddPackage.toggle()
+                            //withAnimation { Event.create(in: self.viewContext) }
+                    }) {
                         Image(systemName: "plus")
+                    }.sheet(isPresented: $showingAddPackage) {
+                        AddPackageView()
                     }
-                )
+            )
             Text("Detail view content goes here")
                 .navigationBarTitle(Text("Detail"))
         }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+    }
+}
+
+struct AddPackageView: View {
+    var body: some View {
+        Text("Add Package form")
     }
 }
 
@@ -44,10 +54,10 @@ struct MasterView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: true)], 
         animation: .default)
     var events: FetchedResults<Event>
-
+    
     @Environment(\.managedObjectContext)
     var viewContext
-
+    
     var body: some View {
         List {
             ForEach(events, id: \.self) { event in
@@ -65,7 +75,7 @@ struct MasterView: View {
 
 struct DetailView: View {
     @ObservedObject var event: Event
-
+    
     var body: some View {
         Text("\(event.timestamp!, formatter: dateFormatter)")
             .navigationBarTitle(Text("Detail"))
