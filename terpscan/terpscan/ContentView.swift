@@ -21,29 +21,61 @@ struct ContentView: View {
     var viewContext
     
     @State var showingAddPackage = false
+    @State var showingAddContact = false
     
     var body: some View {
-        NavigationView {
-            MasterView()
-                // FIXME: Workaround to add-cancel-add modal bug
-                .navigationBarTitle(Text("Packages"), displayMode: .inline)
-                //.navigationBarTitle(Text("Packages"), displayMode: .large)
-                .navigationBarItems(
-                    leading: EditButton(),
-                    trailing: Button(
-                        action: {
-                            self.showingAddPackage.toggle()
-                            //withAnimation { Event.create(in: self.viewContext) }
-                    }) {
-                        Image(systemName: "plus")
-                    }.sheet(isPresented: $showingAddPackage) {
-                        // FIXME: Workaround to package adding in modal with managedObjectContext
-                        AddPackageView(isPresented: self.$showingAddPackage).environment(\.managedObjectContext, self.viewContext)
-                    }
-            )
-            Text("Detail view content goes here")
-                .navigationBarTitle(Text("Detail"))
-        }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+        TabView {
+            NavigationView {
+                MasterView()
+                    // FIXME: Workaround to add-cancel-add modal bug
+                    //.navigationBarTitle(Text("Packages"), displayMode: .inline)
+                    .navigationBarTitle(Text("Packages"), displayMode: .large)
+                    .navigationBarItems(
+                        leading: EditButton(),
+                        trailing: Button(
+                            action: {
+                                self.showingAddPackage.toggle()
+                                //withAnimation { Event.create(in: self.viewContext) }
+                        }) {
+                            Image(systemName: "plus")
+                        }.sheet(isPresented: $showingAddPackage) {
+                            // FIXME: Workaround to package adding in modal with managedObjectContext
+                            AddPackageView(isPresented: self.$showingAddPackage).environment(\.managedObjectContext, self.viewContext)
+                        }
+                )
+                Text("Detail view content goes here")
+                    .navigationBarTitle(Text("Detail"))
+            }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+                .tabItem {
+                    Image(systemName: "cube.box")
+                    Text("Packages")
+            }
+            NavigationView {
+                Text("Contacts page")
+                    // FIXME: Workaround to add-cancel-add modal bug
+                    //.navigationBarTitle(Text("Contacts"), displayMode: .inline)
+                    .navigationBarTitle(Text("Contacts"), displayMode: .large)
+                    .navigationBarItems(
+                        leading: EditButton(),
+                        trailing: Button(
+                            action: {
+                                self.showingAddContact.toggle()
+                                //withAnimation { Event.create(in: self.viewContext) }
+                        }) {
+                            Image(systemName: "plus")
+                        }.sheet(isPresented: $showingAddContact) {
+                            // FIXME: Workaround to package adding in modal with managedObjectContext
+                            AddContactView(isPresented: self.$showingAddContact).environment(\.managedObjectContext, self.viewContext)
+                        }
+                )
+                Text("Detail view content goes here")
+                    .navigationBarTitle(Text("Detail"))
+            }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Contacts")
+            }
+        }
     }
 }
 

@@ -9,13 +9,15 @@
 import SwiftUI
 
 struct AddContactView: View {
+    @Binding var isPresented: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Add Contact page")
     }
 }
 
 struct AddContactView_Previews: PreviewProvider {
     static var previews: some View {
-        AddContactView()
+        AddContactView(isPresented: .constant(true))
     }
 }
