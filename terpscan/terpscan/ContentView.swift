@@ -47,7 +47,7 @@ struct ContentView: View {
                     .navigationBarTitle(Text("Detail"))
             }.navigationViewStyle(DoubleColumnNavigationViewStyle())
                 .tabItem {
-                    Image(systemName: "cube.box")
+                    Image(systemName: "cube.box.fill")
                     Text("Packages")
             }
             NavigationView {
@@ -72,7 +72,7 @@ struct ContentView: View {
                     .navigationBarTitle(Text("Detail"))
             }.navigationViewStyle(DoubleColumnNavigationViewStyle())
                 .tabItem {
-                    Image(systemName: "person.crop.circle")
+                    Image(systemName: "person.crop.circle.fill")
                     Text("Contacts")
             }
         }
