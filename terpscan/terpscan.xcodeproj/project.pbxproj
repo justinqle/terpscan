@@ -105,12 +105,12 @@
 			children = (
 				32C8DA4E242171E300D49967 /* AppDelegate.swift */,
 				32C8DA53242171E300D49967 /* SceneDelegate.swift */,
-				32C8DA55242171E400D49967 /* Event.swift */,
 				32C8DA57242171E400D49967 /* ContentView.swift */,
-				32C8DA59242171E600D49967 /* Assets.xcassets */,
-				32C8DA5E242171E600D49967 /* LaunchScreen.storyboard */,
-				32C8DA61242171E600D49967 /* Info.plist */,
+				32C8DA55242171E400D49967 /* Event.swift */,
 				32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */,
+				32C8DA59242171E600D49967 /* Assets.xcassets */,
+				32C8DA61242171E600D49967 /* Info.plist */,
+				32C8DA5E242171E600D49967 /* LaunchScreen.storyboard */,
 				32C8DA5B242171E600D49967 /* Preview Content */,
 			);
 			path = terpscan;
