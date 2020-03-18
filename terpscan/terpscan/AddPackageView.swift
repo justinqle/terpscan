@@ -96,6 +96,8 @@ struct AddPackageView: View {
                 self.trackingNumber = (code.filter { !$0.isNewline && !$0.isWhitespace }).subString(from: 22, to: 34)
             } else if code.hasPrefix("96")  { // Also FedEx
                 self.trackingNumber = code.subString(from: code.count-12, to: code.count-1)
+            } else if (code.hasPrefix("420")) {
+                self.trackingNumber = code.subString(from: 8, to: code.count-1)
             } else {
                 self.trackingNumber = code
             }
