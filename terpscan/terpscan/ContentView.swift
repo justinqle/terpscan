@@ -24,7 +24,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             MasterView()
-                .navigationBarTitle(Text("Packages"))
+                // FIXME: Workaround to add-cancel-add modal bug
+                .navigationBarTitle(Text("Packages"), displayMode: .inline)
+                //.navigationBarTitle(Text("Packages"), displayMode: .large)
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
@@ -34,7 +36,8 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "plus")
                     }.sheet(isPresented: $showingAddPackage) {
-                        AddPackageView()
+                        // FIXME: Workaround to package adding in modal with managedObjectContext
+                        AddPackageView(isPresented: self.$showingAddPackage).environment(\.managedObjectContext, self.viewContext)
                     }
             )
             Text("Detail view content goes here")
@@ -44,8 +47,47 @@ struct ContentView: View {
 }
 
 struct AddPackageView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @Binding var isPresented: Bool
+    
+    @State var firstName: String = ""
+    @State var lastName: String = ""
+    @State var selectedCarrier = 0
+    
+    var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
+    
     var body: some View {
-        Text("Add Package form")
+        NavigationView {
+            Form {
+                Section {
+                    TextField("First name", text: $firstName)
+                    TextField("Last name", text: $lastName)
+                }
+                Section {
+                    Picker(selection: $selectedCarrier, label: Text("Carrier")) {
+                        ForEach(0 ..< carriers.count) {
+                            Text(self.carriers[$0])
+                        }
+                    }
+                }
+            }.navigationBarTitle("New Package", displayMode: .inline)
+                .navigationBarItems(
+                    leading: Button(
+                        action: {
+                            self.isPresented = false
+                    }) {
+                        Text("Cancel")
+                    },
+                    trailing: Button(
+                        action: {
+                            self.isPresented = false
+                            withAnimation { Event.create(in: self.viewContext) }
+                    }) {
+                        Text("Done")
+                    }
+            )
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -58,8 +100,10 @@ struct MasterView: View {
     @Environment(\.managedObjectContext)
     var viewContext
     
+    @State var selectKeeper = Set<Event>()
+    
     var body: some View {
-        List {
+        List(selection: $selectKeeper) {
             ForEach(events, id: \.self) { event in
                 NavigationLink(
                     destination: DetailView(event: event)
