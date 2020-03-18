@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		32C8DA60242171E600D49967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C8DA5E242171E600D49967 /* LaunchScreen.storyboard */; };
 		32C8DA6B242171E600D49967 /* terpscanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA6A242171E600D49967 /* terpscanTests.swift */; };
 		32C8DA76242171E600D49967 /* terpscanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA75242171E600D49967 /* terpscanUITests.swift */; };
+		32C8DA902421D3F600D49967 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 32C8DA8F2421D3F600D49967 /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32C8DA902421D3F600D49967 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +160,9 @@
 			dependencies = (
 			);
 			name = terpscan;
+			packageProductDependencies = (
+				32C8DA8F2421D3F600D49967 /* CodeScanner */,
+			);
 			productName = terpscan;
 			productReference = 32C8DA4B242171E300D49967 /* terpscan.app */;
 			productType = "com.apple.product-type.application";
@@ -230,6 +235,9 @@
 				Base,
 			);
 			mainGroup = 32C8DA42242171E300D49967;
+			packageReferences = (
+				32C8DA8E2421D3F600D49967 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 32C8DA4C242171E300D49967 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -602,6 +610,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32C8DA8E2421D3F600D49967 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32C8DA8F2421D3F600D49967 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32C8DA8E2421D3F600D49967 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */ = {

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
@@ -53,6 +54,8 @@ struct AddPackageView: View {
     
     @State var firstName: String = ""
     @State var lastName: String = ""
+    @State var trackingNumber: String = ""
+    @State var isShowingScanner = false
     @State var selectedCarrier = 0
     
     var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
@@ -65,6 +68,17 @@ struct AddPackageView: View {
                     TextField("Last name", text: $lastName)
                 }
                 Section {
+                    HStack {
+                        TextField("Tracking number", text: $trackingNumber)
+                        Button(
+                            action: {
+                                self.isShowingScanner = true
+                        }) {
+                            Image(systemName: "barcode.viewfinder")
+                        }.sheet(isPresented: $isShowingScanner) {
+                            CodeScannerView(codeTypes: [.code128], simulatedData: "-1", completion: self.handleScan)
+                        }
+                    }
                     Picker(selection: $selectedCarrier, label: Text("Carrier")) {
                         ForEach(0 ..< carriers.count) {
                             Text(self.carriers[$0])
@@ -88,6 +102,16 @@ struct AddPackageView: View {
                     }
             )
         }.navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+        self.isShowingScanner = false
+        switch result {
+        case .success(let code):
+            self.trackingNumber = code
+        case .failure(let error):
+            print("Scanning failed")
+        }
     }
 }
 
