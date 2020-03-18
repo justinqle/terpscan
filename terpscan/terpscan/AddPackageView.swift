@@ -28,8 +28,11 @@ struct AddPackageView: View {
     @State var trackingNumber: String = ""
     @State var isShowingScanner = false
     @State var selectedCarrier = 0
+    @State var selectedSize = 0
+    @State var notes: String = ""
     
     var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
+    var sizes = ["Small", "Medium", "Large"]
     
     var body: some View {
         NavigationView {
@@ -55,6 +58,14 @@ struct AddPackageView: View {
                             Text(self.carriers[$0])
                         }
                     }
+                }
+                Section {
+                    Picker(selection: $selectedSize, label: Text("Size")) {
+                        ForEach(0 ..< sizes.count) {
+                            Text(self.sizes[$0])
+                        }
+                    }
+                    TextField("Notes", text: $notes)
                 }
             }.navigationBarTitle("New Package", displayMode: .inline)
                 .navigationBarItems(
