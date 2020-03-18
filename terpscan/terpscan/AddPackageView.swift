@@ -54,14 +54,14 @@ struct AddPackageView: View {
                         }
                     }
                     Picker(selection: $selectedCarrier, label: Text("Carrier")) {
-                        ForEach(0 ..< carriers.count) {
+                        ForEach(0 ..< carriers.count, id: \.self) {
                             Text(self.carriers[$0])
                         }
                     }
                 }
                 Section {
                     Picker(selection: $selectedSize, label: Text("Size")) {
-                        ForEach(0 ..< sizes.count) {
+                        ForEach(0 ..< sizes.count, id: \.self) {
                             Text(self.sizes[$0])
                         }
                     }
