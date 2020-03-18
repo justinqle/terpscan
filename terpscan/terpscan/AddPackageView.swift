@@ -38,6 +38,16 @@ struct AddPackageView: View {
         NavigationView {
             Form {
                 Section {
+                    Button(
+                        action: {
+                            
+                    }) {
+                        HStack {
+                            Text("Recipient")
+                            Spacer()
+                            Image(systemName: "person.crop.circle")
+                        }
+                    }
                     TextField("First name", text: $firstName)
                     TextField("Last name", text: $lastName)
                 }
@@ -64,7 +74,9 @@ struct AddPackageView: View {
                         ForEach(0 ..< sizes.count, id: \.self) {
                             Text(self.sizes[$0])
                         }
-                    }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                Section {
                     TextField("Notes", text: $notes)
                 }
             }.navigationBarTitle("New Package", displayMode: .inline)
