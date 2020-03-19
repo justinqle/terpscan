@@ -1,20 +1,29 @@
 //
-//  Package.swift
+//  Contact.swift
 //  terpscan
 //
-//  Created by Justin Le on 3/17/20.
+//  Created by Justin Le on 3/19/20.
 //  Copyright © 2020 Justin Le. All rights reserved.
 //
 
 import SwiftUI
 import CoreData
 
-extension Package {
-    static func create(in managedObjectContext: NSManagedObjectContext, for recipient: Contact, trackingNumber: String){
-        let newPackage = self.init(context: managedObjectContext)
-        newPackage.timestamp = Date()
-        newPackage.trackingNumber = trackingNumber
-        newPackage.recipient = recipient
+extension Contact {
+    static func create(in managedObjectContext: NSManagedObjectContext,
+                       firstName: String,
+                       lastName: String,
+                       email: String,
+                       roomNumber: String?,
+                       packages: NSSet?) {
+        let newContact = self.init(context: managedObjectContext)
+        newContact.firstName = firstName
+        newContact.lastName = lastName
+        newContact.email = email
+        newContact.roomNumber = roomNumber
+        if let packages = packages {
+            newContact.packages = packages
+        }
         
         do {
             try  managedObjectContext.save()
@@ -24,12 +33,13 @@ extension Package {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-    }   
+    }
 }
 
-extension Collection where Element == Package, Index == Int {
-    func deletePackage(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
-        indices.forEach { managedObjectContext.delete(self[$0]) }       
+extension Collection where Element == Contact, Index == Int {
+    func deleteContact(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
+        indices.forEach { managedObjectContext.delete(self[$0]) }
+        
         do {
             try managedObjectContext.save()
         } catch {

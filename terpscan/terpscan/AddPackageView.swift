@@ -22,12 +22,16 @@ extension String {
 }
 
 struct AddPackageView: View {
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Contact.lastName, ascending: true)],
+        animation: .default)
+    var contacts: FetchedResults<Contact>
+    
     @Environment(\.managedObjectContext) var viewContext
     
     @Binding var isPresented: Bool
     
-    @State var firstName: String = ""
-    @State var lastName: String = ""
+    @State var selectedRecipient: Contact?
     @State var trackingNumber: String = ""
     @State var isShowingScanner = false
     @State var selectedCarrier = 0
@@ -41,18 +45,11 @@ struct AddPackageView: View {
         NavigationView {
             Form {
                 Section {
-                    Button(
-                        action: {
-                            
-                    }) {
-                        HStack {
-                            Text("Recipient")
-                            Spacer()
-                            Image(systemName: "person.crop.circle")
+                    Picker(selection: $selectedRecipient, label: Text("Recipient")) {
+                        ForEach(contacts, id: \.self) { contact in
+                            Text("\(contact.firstName!) \(contact.lastName!)").tag(contact as Contact?)
                         }
                     }
-                    TextField("First name", text: $firstName)
-                    TextField("Last name", text: $lastName)
                 }
                 Section {
                     HStack {
@@ -93,7 +90,9 @@ struct AddPackageView: View {
                     trailing: Button(
                         action: {
                             self.isPresented = false
-                            withAnimation { Package.create(in: self.viewContext, trackingNumber: self.trackingNumber) }
+                            withAnimation { Package.create(in: self.viewContext,
+                                                           for: self.selectedRecipient!,
+                                                           trackingNumber: self.trackingNumber) }
                     }) {
                         Text("Done")
                     }

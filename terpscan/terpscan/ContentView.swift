@@ -9,7 +9,7 @@
 import SwiftUI
 import CodeScanner
 
-private let dateFormatter: DateFormatter = {
+public let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .short
     dateFormatter.timeStyle = .short
@@ -44,13 +44,13 @@ struct ContentView: View {
                 )
                 Text("Detail view content goes here")
                     .navigationBarTitle(Text("Detail"))
-            }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+            }.navigationViewStyle(StackNavigationViewStyle()) // FIXME: Compatability with iPads
                 .tabItem {
                     Image(systemName: "cube.box.fill")
                     Text("Packages")
             }
             NavigationView {
-                Text("Contacts page")
+                ContactsView()
                     // FIXME: Workaround to add-cancel-add modal bug
                     //.navigationBarTitle(Text("Contacts"), displayMode: .inline)
                     .navigationBarTitle(Text("Contacts"), displayMode: .large)
@@ -68,7 +68,7 @@ struct ContentView: View {
                 )
                 Text("Detail view content goes here")
                     .navigationBarTitle(Text("Detail"))
-            }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+            }.navigationViewStyle(StackNavigationViewStyle()) // FIXME: Compatability with iPads
                 .tabItem {
                     Image(systemName: "person.crop.circle.fill")
                     Text("Contacts")
@@ -107,7 +107,7 @@ struct MasterView: View {
                     }
                 }
             }.onDelete { indices in
-                self.packages.delete(at: indices, from: self.viewContext)
+                self.packages.deletePackage(at: indices, from: self.viewContext)
             }
         }
     }
