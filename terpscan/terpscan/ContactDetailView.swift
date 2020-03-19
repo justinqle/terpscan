@@ -28,7 +28,7 @@ struct ContactDetailView: View {
             Divider()
             Text("packages (\(contact.packages?.count ?? 0))").font(.subheadline)
             ForEach(Array(contact.packages as! Set<Package>), id: \.self) { package in
-                Text("\u{2022} \(package.timestamp!, formatter: dateFormatter): \(package.trackingNumber!)")
+                Text("\u{2022} \(package.timestamp!, formatter: dateFormatter): \(package.trackingNumber!)").lineLimit(1)
             }
             Spacer()
         }.padding(15)

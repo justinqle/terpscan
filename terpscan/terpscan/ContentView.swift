@@ -101,7 +101,7 @@ struct MasterView: View {
                     destination: DetailView(package: package)
                 ) {
                     VStack(alignment: .leading) {
-                        Text("Justin Le").font(.headline)
+                        Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)").font(.headline)
                         HStack {
                             Text("TRK#:").font(.caption)
                             Text("\(package.trackingNumber!)")

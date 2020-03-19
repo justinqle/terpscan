@@ -17,10 +17,8 @@ struct ContactsView: View {
     @Environment(\.managedObjectContext)
     var viewContext
     
-    @State var selectKeeper = Set<Contact>()
-    
     var body: some View {
-        List(selection: $selectKeeper) {
+        List {
             ForEach(contacts, id: \.self) { contact in
                 NavigationLink(
                     destination: ContactDetailView(contact: contact)
