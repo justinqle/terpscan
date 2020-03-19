@@ -26,9 +26,9 @@ struct ContactDetailView: View {
             Text("room number").font(.subheadline)
             Text("\(contact.roomNumber!)")
             Divider()
-            Text("packages").font(.subheadline)
+            Text("packages (\(contact.packages?.count ?? 0))").font(.subheadline)
             ForEach(Array(contact.packages as! Set<Package>), id: \.self) { package in
-                Text(package.value(forKey: "trackingNumber") as! String)
+                Text("\u{2022} \(package.timestamp!, formatter: dateFormatter): \(package.trackingNumber!)")
             }
             Spacer()
         }.padding(15)
