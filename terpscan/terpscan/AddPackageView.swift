@@ -90,7 +90,7 @@ struct AddPackageView: View {
                     trailing: Button(
                         action: {
                             self.isPresented = false
-                            withAnimation { Event.create(in: self.viewContext) }
+                            withAnimation { Package.create(in: self.viewContext) }
                     }) {
                         Text("Done")
                     }

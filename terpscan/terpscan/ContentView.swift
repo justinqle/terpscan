@@ -35,7 +35,7 @@ struct ContentView: View {
                         trailing: Button(
                             action: {
                                 self.showingAddPackage.toggle()
-                                //withAnimation { Event.create(in: self.viewContext) }
+                                //withAnimation { Package.create(in: self.viewContext) }
                         }) {
                             Image(systemName: "plus")
                         }.sheet(isPresented: $showingAddPackage) {
@@ -60,7 +60,7 @@ struct ContentView: View {
                         trailing: Button(
                             action: {
                                 self.showingAddContact.toggle()
-                                //withAnimation { Event.create(in: self.viewContext) }
+                                //withAnimation { Package.create(in: self.viewContext) }
                         }) {
                             Image(systemName: "plus")
                         }.sheet(isPresented: $showingAddContact) {
@@ -81,20 +81,20 @@ struct ContentView: View {
 
 struct MasterView: View {
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: false)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Package.timestamp, ascending: false)],
         animation: .default)
-    var events: FetchedResults<Event>
+    var packages: FetchedResults<Package>
     
     @Environment(\.managedObjectContext)
     var viewContext
     
-    @State var selectKeeper = Set<Event>()
+    @State var selectKeeper = Set<Package>()
     
     var body: some View {
         List(selection: $selectKeeper) {
-            ForEach(events, id: \.self) { event in
+            ForEach(packages, id: \.self) { package in
                 NavigationLink(
-                    destination: DetailView(event: event)
+                    destination: DetailView(package: package)
                 ) {
                     VStack(alignment: .leading) {
                         Text("Justin Le").font(.headline)
@@ -104,22 +104,22 @@ struct MasterView: View {
                         }
                         HStack {
                             Text("Received:").font(.caption)
-                            Text("\(event.timestamp!, formatter: dateFormatter)")
+                            Text("\(package.timestamp!, formatter: dateFormatter)")
                         }
                     }
                 }
             }.onDelete { indices in
-                self.events.delete(at: indices, from: self.viewContext)
+                self.packages.delete(at: indices, from: self.viewContext)
             }
         }
     }
 }
 
 struct DetailView: View {
-    @ObservedObject var event: Event
+    @ObservedObject var package: Package
     
     var body: some View {
-        Text("\(event.timestamp!, formatter: dateFormatter)")
+        Text("\(package.timestamp!, formatter: dateFormatter)")
             .navigationBarTitle(Text("Detail"))
     }
 }

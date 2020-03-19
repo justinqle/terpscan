@@ -1,5 +1,5 @@
 //
-//  Event.swift
+//  Package.swift
 //  terpscan
 //
 //  Created by Justin Le on 3/17/20.
@@ -9,10 +9,10 @@
 import SwiftUI
 import CoreData
 
-extension Event {
+extension Package {
     static func create(in managedObjectContext: NSManagedObjectContext){
-        let newEvent = self.init(context: managedObjectContext)
-        newEvent.timestamp = Date()
+        let newPackage = self.init(context: managedObjectContext)
+        newPackage.timestamp = Date()
         
         do {
             try  managedObjectContext.save()
@@ -25,7 +25,7 @@ extension Event {
     }   
 }
 
-extension Collection where Element == Event, Index == Int {
+extension Collection where Element == Package, Index == Int {
     func delete(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
         indices.forEach { managedObjectContext.delete(self[$0]) }       
  

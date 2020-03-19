@@ -10,7 +10,7 @@
 		32C8DA4F242171E300D49967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA4E242171E300D49967 /* AppDelegate.swift */; };
 		32C8DA52242171E300D49967 /* terpscan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */; };
 		32C8DA54242171E300D49967 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA53242171E300D49967 /* SceneDelegate.swift */; };
-		32C8DA56242171E400D49967 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA55242171E400D49967 /* Event.swift */; };
+		32C8DA56242171E400D49967 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA55242171E400D49967 /* Package.swift */; };
 		32C8DA58242171E400D49967 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA57242171E400D49967 /* ContentView.swift */; };
 		32C8DA5A242171E600D49967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C8DA59242171E600D49967 /* Assets.xcassets */; };
 		32C8DA5D242171E600D49967 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C8DA5C242171E600D49967 /* Preview Assets.xcassets */; };
@@ -44,7 +44,7 @@
 		32C8DA4E242171E300D49967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C8DA51242171E300D49967 /* terpscan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = terpscan.xcdatamodel; sourceTree = "<group>"; };
 		32C8DA53242171E300D49967 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		32C8DA55242171E400D49967 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		32C8DA55242171E400D49967 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		32C8DA57242171E400D49967 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32C8DA59242171E600D49967 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32C8DA5C242171E600D49967 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 				32C8DA57242171E400D49967 /* ContentView.swift */,
 				32C8DA952421F47F00D49967 /* AddPackageView.swift */,
 				32C8DA972421F9C600D49967 /* AddContactView.swift */,
-				32C8DA55242171E400D49967 /* Event.swift */,
+				32C8DA55242171E400D49967 /* Package.swift */,
 				32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */,
 				32C8DA59242171E600D49967 /* Assets.xcassets */,
 				32C8DA61242171E600D49967 /* Info.plist */,
@@ -287,7 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32C8DA56242171E400D49967 /* Event.swift in Sources */,
+				32C8DA56242171E400D49967 /* Package.swift in Sources */,
 				32C8DA962421F47F00D49967 /* AddPackageView.swift in Sources */,
 				32C8DA58242171E400D49967 /* ContentView.swift in Sources */,
 				32C8DA4F242171E300D49967 /* AppDelegate.swift in Sources */,
