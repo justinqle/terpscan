@@ -35,7 +35,6 @@ struct ContentView: View {
                         trailing: Button(
                             action: {
                                 self.showingAddPackage.toggle()
-                                //withAnimation { Package.create(in: self.viewContext) }
                         }) {
                             Image(systemName: "plus")
                         }.sheet(isPresented: $showingAddPackage) {
@@ -60,7 +59,6 @@ struct ContentView: View {
                         trailing: Button(
                             action: {
                                 self.showingAddContact.toggle()
-                                //withAnimation { Package.create(in: self.viewContext) }
                         }) {
                             Image(systemName: "plus")
                         }.sheet(isPresented: $showingAddContact) {
@@ -100,7 +98,7 @@ struct MasterView: View {
                         Text("Justin Le").font(.headline)
                         HStack {
                             Text("TRK#:").font(.caption)
-                            Text("1Z305YY66709216808")
+                            Text("\(package.trackingNumber!)")
                         }
                         HStack {
                             Text("Received:").font(.caption)

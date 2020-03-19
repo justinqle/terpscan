@@ -2,9 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Package" representedClassName="Package" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date"/>
+        <attribute name="trackingNumber" optional="YES" attributeType="String"/>
         <userInfo/>
     </entity>
     <elements>
-        <element name="Package" positionX="261" positionY="189" width="128" height="58"/>
+        <element name="Package" positionX="261" positionY="189" width="128" height="73"/>
     </elements>
 </model>
