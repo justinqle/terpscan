@@ -11,8 +11,8 @@ import CodeScanner
 
 private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .medium
-    dateFormatter.timeStyle = .medium
+    dateFormatter.dateStyle = .short
+    dateFormatter.timeStyle = .short
     return dateFormatter
 }()
 
@@ -81,7 +81,7 @@ struct ContentView: View {
 
 struct MasterView: View {
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: true)], 
+        sortDescriptors: [NSSortDescriptor(keyPath: \Event.timestamp, ascending: false)],
         animation: .default)
     var events: FetchedResults<Event>
     
@@ -96,7 +96,17 @@ struct MasterView: View {
                 NavigationLink(
                     destination: DetailView(event: event)
                 ) {
-                    Text("\(event.timestamp!, formatter: dateFormatter)")
+                    VStack(alignment: .leading) {
+                        Text("Justin Le").font(.headline)
+                        HStack {
+                            Text("TRK#:").font(.caption)
+                            Text("1Z305YY66709216808")
+                        }
+                        HStack {
+                            Text("Received:").font(.caption)
+                            Text("\(event.timestamp!, formatter: dateFormatter)")
+                        }
+                    }
                 }
             }.onDelete { indices in
                 self.events.delete(at: indices, from: self.viewContext)
