@@ -36,7 +36,10 @@ struct ContentView: View {
                             action: {
                                 self.showingAddPackage.toggle()
                         }) {
-                            Image(systemName: "plus")
+                            HStack {
+                                Text("New Package")
+                                Image(systemName: "plus")
+                            }
                         }.sheet(isPresented: $showingAddPackage) {
                             // FIXME: Workaround to package adding in modal with managedObjectContext
                             AddPackageView(isPresented: self.$showingAddPackage).environment(\.managedObjectContext, self.viewContext)
@@ -60,7 +63,10 @@ struct ContentView: View {
                             action: {
                                 self.showingAddContact.toggle()
                         }) {
-                            Image(systemName: "plus")
+                            HStack {
+                                Text("New Contact")
+                                Image(systemName: "plus")
+                            }
                         }.sheet(isPresented: $showingAddContact) {
                             // FIXME: Workaround to package adding in modal with managedObjectContext
                             AddContactView(isPresented: self.$showingAddContact).environment(\.managedObjectContext, self.viewContext)
@@ -117,8 +123,23 @@ struct DetailView: View {
     @ObservedObject var package: Package
     
     var body: some View {
-        Text("\(package.timestamp!, formatter: dateFormatter)")
-            .navigationBarTitle(Text("Detail"))
+        VStack(alignment: .center, spacing: 20) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("recipient").font(.subheadline)
+                Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)")
+                Divider()
+                Text("tracking number").font(.subheadline)
+                Text("\(package.trackingNumber!)")
+                Divider()
+                
+            }
+            Text("Added \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
+            Spacer()
+        }.padding(15)
+            .navigationBarTitle("\(package.trackingNumber!)")
+            .navigationBarItems(
+                trailing: EditButton()
+        )
     }
 }
 

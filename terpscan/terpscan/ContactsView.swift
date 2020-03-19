@@ -37,29 +37,6 @@ struct ContactsView: View {
     }
 }
 
-struct ContactDetailView: View {
-    @ObservedObject var contact: Contact
-    
-    var body: some View {
-        Form {
-            Section(header: Text("Name")) {
-                TextField("First name", text: Binding($contact.firstName)!)
-                TextField("Last name", text: Binding($contact.lastName)!)
-            }
-            Section(header: Text("Email")) {
-                TextField("Email", text: Binding($contact.email)!)
-            }
-            Section(header: Text("Room number")) {
-                TextField("Room number", text: Binding($contact.roomNumber)!)
-            }
-        }.disabled(true)
-            .navigationBarTitle("\(contact.firstName!) \(contact.lastName!)")
-            .navigationBarItems(
-                trailing: EditButton()
-        )
-    }
-}
-
 
 struct ContactsView_Previews: PreviewProvider {
     static var previews: some View {

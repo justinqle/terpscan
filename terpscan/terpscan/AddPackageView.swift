@@ -47,7 +47,10 @@ struct AddPackageView: View {
                 Section {
                     Picker(selection: $selectedRecipient, label: Text("Recipient")) {
                         ForEach(contacts, id: \.self) { contact in
-                            Text("\(contact.firstName!) \(contact.lastName!)").tag(contact as Contact?)
+                            HStack(spacing: 4) {
+                                Text("\(contact.firstName!)")
+                                Text("\(contact.lastName!)").fontWeight(.bold)
+                            }.tag(contact as Contact?)
                         }
                     }
                 }
