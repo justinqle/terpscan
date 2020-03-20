@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Contact" representedClassName="Contact" codeGenerationType="class">
+        <attribute name="buildingCode" optional="YES" attributeType="String"/>
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
         <attribute name="lastName" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <attribute name="roomNumber" optional="YES" attributeType="String"/>
         <relationship name="packages" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Package" inverseName="recipient" inverseEntity="Package"/>
         <userInfo/>
@@ -15,7 +17,7 @@
         <userInfo/>
     </entity>
     <elements>
+        <element name="Contact" positionX="564.53125" positionY="185.671875" width="128" height="148"/>
         <element name="Package" positionX="256.3515625" positionY="193.44921875" width="128" height="88"/>
-        <element name="Contact" positionX="564.53125" positionY="185.671875" width="128" height="118"/>
     </elements>
 </model>

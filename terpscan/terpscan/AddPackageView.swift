@@ -61,7 +61,7 @@ struct AddPackageView: View {
                             action: {
                                 self.isShowingScanner = true
                         }) {
-                            Image(systemName: "barcode.viewfinder")
+                            Image(systemName: "barcode.viewfinder").imageScale(.large)
                         }.sheet(isPresented: $isShowingScanner) {
                             CodeScannerView(codeTypes: [.code128, .pdf417], simulatedData: "-1", completion: self.handleScan)
                         }

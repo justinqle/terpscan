@@ -14,13 +14,23 @@ extension Contact {
                        firstName: String,
                        lastName: String,
                        email: String,
+                       phoneNumber: String?,
+                       buildingCode: String?,
                        roomNumber: String?,
                        packages: NSSet?) {
         let newContact = self.init(context: managedObjectContext)
         newContact.firstName = firstName
         newContact.lastName = lastName
         newContact.email = email
-        newContact.roomNumber = roomNumber
+        if let phoneNumber = phoneNumber {
+            newContact.phoneNumber = phoneNumber
+        }
+        if let buildingCode = buildingCode {
+            newContact.buildingCode = buildingCode
+        }
+        if let roomNumber = roomNumber {
+            newContact.roomNumber = roomNumber
+        }
         if let packages = packages {
             newContact.packages = packages
         }

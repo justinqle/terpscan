@@ -47,7 +47,7 @@ struct ContentView: View {
                 )
                 Text("Detail view content goes here")
                     .navigationBarTitle(Text("Detail"))
-            }.navigationViewStyle(StackNavigationViewStyle()) // FIXME: Compatability with iPads
+            }.navigationViewStyle(DoubleColumnNavigationViewStyle()) // FIXME: Force two-column
                 .tabItem {
                     Image(systemName: "cube.box.fill")
                     Text("Packages")
@@ -74,12 +74,12 @@ struct ContentView: View {
                 )
                 Text("Detail view content goes here")
                     .navigationBarTitle(Text("Detail"))
-            }.navigationViewStyle(StackNavigationViewStyle()) // FIXME: Compatability with iPads
+            }.navigationViewStyle(DoubleColumnNavigationViewStyle()) // FIXME: Force two-column
                 .tabItem {
                     Image(systemName: "person.crop.circle.fill")
                     Text("Contacts")
             }
-        }
+        }.accentColor(Color(#colorLiteral(red: 0.8884014487, green: 0.1081022099, blue: 0.1330436766, alpha: 1)))
     }
 }
 
