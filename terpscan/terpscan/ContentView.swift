@@ -9,6 +9,8 @@
 import SwiftUI
 import CodeScanner
 
+public let primaryColor = Color(#colorLiteral(red: 0.8884014487, green: 0.1081022099, blue: 0.1330436766, alpha: 1))
+
 public let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .short
@@ -20,129 +22,40 @@ struct ContentView: View {
     @Environment(\.managedObjectContext)
     var viewContext
     
-    @State var showingAddPackage = false
-    @State var showingAddContact = false
+    @State private var showingAddMailbox = false
     
     var body: some View {
-        TabView {
+        // FIXME: Workaround to force DoubleColumns in portrait mode for iPad
+        GeometryReader { geo in
             NavigationView {
-                MasterView()
-                    // FIXME: Workaround to add-cancel-add modal bug
-                    //.navigationBarTitle(Text("Packages"), displayMode: .inline)
-                    .navigationBarTitle(Text("Packages"), displayMode: .large)
-                    .navigationBarItems(
-                        leading: EditButton(),
-                        trailing: Button(
-                            action: {
-                                self.showingAddPackage.toggle()
-                        }) {
-                            HStack {
-                                Text("New Package")
-                                Image(systemName: "plus")
+                VStack {
+                    MailboxesView()
+                        // FIXME: Workaround to add-cancel-add modal bug
+                        //.navigationBarTitle(Text("Contacts"), displayMode: .inline)
+                        .navigationBarTitle(Text("Mailboxes"), displayMode: .large)
+                        .navigationBarItems(
+                            trailing: Button(
+                                action: {
+                                    self.showingAddMailbox.toggle()
+                            }) {
+                                HStack {
+                                    Text("New Mailbox")
+                                    Image(systemName: "plus")
+                                }
+                            }.sheet(isPresented: self.$showingAddMailbox) {
+                                AddMailboxView(isPresented: self.$showingAddMailbox)
+                                    // FIXME: Workaround to package adding in modal with managedObjectContext
+                                    .environment(\.managedObjectContext, self.viewContext)
+                                    .accentColor(primaryColor)
                             }
-                        }.sheet(isPresented: $showingAddPackage) {
-                            // FIXME: Workaround to package adding in modal with managedObjectContext
-                            AddPackageView(isPresented: self.$showingAddPackage).environment(\.managedObjectContext, self.viewContext)
-                        }
-                )
-                Text("Detail view content goes here")
-                    .navigationBarTitle(Text("Detail"))
-            }.navigationViewStyle(DoubleColumnNavigationViewStyle()) // FIXME: Force two-column
-                .tabItem {
-                    Image(systemName: "cube.box.fill")
-                    Text("Packages")
-            }
-            NavigationView {
-                ContactsView()
-                    // FIXME: Workaround to add-cancel-add modal bug
-                    //.navigationBarTitle(Text("Contacts"), displayMode: .inline)
-                    .navigationBarTitle(Text("Contacts"), displayMode: .large)
-                    .navigationBarItems(
-                        leading: EditButton(),
-                        trailing: Button(
-                            action: {
-                                self.showingAddContact.toggle()
-                        }) {
-                            HStack {
-                                Text("New Contact")
-                                Image(systemName: "plus")
-                            }
-                        }.sheet(isPresented: $showingAddContact) {
-                            // FIXME: Workaround to package adding in modal with managedObjectContext
-                            AddContactView(isPresented: self.$showingAddContact).environment(\.managedObjectContext, self.viewContext)
-                        }
-                )
-                Text("Detail view content goes here")
-                    .navigationBarTitle(Text("Detail"))
-            }.navigationViewStyle(DoubleColumnNavigationViewStyle()) // FIXME: Force two-column
-                .tabItem {
-                    Image(systemName: "person.crop.circle.fill")
-                    Text("Contacts")
-            }
-        }.accentColor(Color(#colorLiteral(red: 0.8884014487, green: 0.1081022099, blue: 0.1330436766, alpha: 1)))
-    }
-}
-
-struct MasterView: View {
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Package.timestamp, ascending: false)],
-        animation: .default)
-    var packages: FetchedResults<Package>
-    
-    @Environment(\.managedObjectContext)
-    var viewContext
-    
-    @State var selectKeeper = Set<Package>()
-    
-    var body: some View {
-        List(selection: $selectKeeper) {
-            ForEach(packages, id: \.self) { package in
-                NavigationLink(
-                    destination: DetailView(package: package)
-                ) {
-                    VStack(alignment: .leading) {
-                        Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)").font(.headline)
-                        HStack {
-                            Text("TRK#:").font(.caption)
-                            Text("\(package.trackingNumber!)")
-                        }
-                        HStack {
-                            Text("Received:").font(.caption)
-                            Text("\(package.timestamp!, formatter: dateFormatter)")
-                        }
-                    }
+                    )
                 }
-            }.onDelete { indices in
-                self.packages.deletePackage(at: indices, from: self.viewContext)
-            }
+            }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+                .accentColor(primaryColor)
+                .padding(.leading, geo.size.height > geo.size.width ? 1 : 0)
         }
     }
 }
-
-struct DetailView: View {
-    @ObservedObject var package: Package
-    
-    var body: some View {
-        VStack(alignment: .center, spacing: 20) {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("recipient").font(.subheadline)
-                Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)")
-                Divider()
-                Text("tracking number").font(.subheadline)
-                Text("\(package.trackingNumber!)")
-                Divider()
-                
-            }
-            Text("Added \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
-            Spacer()
-        }.padding(15)
-            .navigationBarTitle("\(package.trackingNumber!)")
-            .navigationBarItems(
-                trailing: EditButton()
-        )
-    }
-}
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

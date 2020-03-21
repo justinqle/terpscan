@@ -1,5 +1,5 @@
 //
-//  AddContactView.swift
+//  AddMailboxView.swift
 //  terpscan
 //
 //  Created by Justin Le on 3/18/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AddContactView: View {
+struct AddMailboxView: View {
     @Environment(\.managedObjectContext) var viewContext
     
     @Binding var isPresented: Bool
@@ -44,7 +44,7 @@ struct AddContactView: View {
                     // FIXME: Room number enforcement
                     TextField("Room number", text: $roomNumber).keyboardType(.numberPad)
                 }
-            }.navigationBarTitle("New Contact", displayMode: .inline)
+            }.navigationBarTitle("New Mailbox", displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(
                         action: {
@@ -76,8 +76,8 @@ struct AddContactView: View {
     }
 }
 
-struct AddContactView_Previews: PreviewProvider {
+struct AddMailboxView_Previews: PreviewProvider {
     static var previews: some View {
-        AddContactView(isPresented: .constant(true))
+        AddMailboxView(isPresented: .constant(true))
     }
 }

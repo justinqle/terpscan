@@ -36,10 +36,14 @@ struct AddPackageView: View {
     @State var isShowingScanner = false
     @State var selectedCarrier = 0
     @State var selectedSize = 0
-    @State var notes: String = ""
     
     var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
     var sizes = ["Small", "Medium", "Large"]
+    
+    init(isPresented: Binding<Bool>, recipient: Contact?) {
+        _isPresented = isPresented
+        _selectedRecipient = State.init(initialValue: recipient)
+    }
     
     var body: some View {
         NavigationView {
@@ -79,9 +83,6 @@ struct AddPackageView: View {
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                 }
-                Section {
-                    TextField("Notes", text: $notes)
-                }
             }.navigationBarTitle("New Package", displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(
@@ -101,6 +102,7 @@ struct AddPackageView: View {
                     }
             )
         }.navigationViewStyle(StackNavigationViewStyle())
+            .accentColor(primaryColor)
     }
     
     func handleScan(result: Result<String, CodeScannerView.ScanError>) {
@@ -139,6 +141,14 @@ struct AddPackageView: View {
 
 struct AddPackageView_Previews: PreviewProvider {
     static var previews: some View {
-        AddPackageView(isPresented: .constant(true))
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let contact = Contact.init(context: context)
+        contact.firstName = "Justin"
+        contact.lastName = "Le"
+        contact.email = "justinqle@gmail.com"
+        contact.phoneNumber = "2404472771"
+        contact.buildingCode = "IRB"
+        contact.roomNumber = "5109"
+        return AddPackageView(isPresented: .constant(true), recipient: contact).environment(\.managedObjectContext, context)
     }
 }
