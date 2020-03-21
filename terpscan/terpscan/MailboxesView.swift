@@ -27,7 +27,7 @@ struct MailboxesView: View {
     var body: some View {
         List {
             NavigationLink(
-                destination: PackagesView()
+                destination: PackagesView(recipient: nil)
                     .navigationBarTitle(Text("All Inboxes"), displayMode: .large)
                     .navigationBarItems(
                         trailing: EditButton()
@@ -39,7 +39,7 @@ struct MailboxesView: View {
                 }
             }
             NavigationLink(
-                destination: PackagesView()
+                destination: PackagesView(recipient: nil)
                     .navigationBarTitle(Text("Archive"), displayMode: .large)
             ) {
                 HStack {

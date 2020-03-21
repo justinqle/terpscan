@@ -9,16 +9,25 @@
 import SwiftUI
 
 struct PackagesView: View {
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Package.timestamp, ascending: false)],
-        animation: .default)
-    var packages: FetchedResults<Package>
+    var packagesRequest : FetchRequest<Package>
+    var packages: FetchedResults<Package>{packagesRequest.wrappedValue}
     
     @Environment(\.managedObjectContext)
     var viewContext
     @Environment(\.editMode) var mode
     
     @State public var selectedPackages = Set<Package>()
+    
+    init(recipient: Contact?) {
+        var predicate: NSPredicate? = nil
+        if let recipient = recipient {
+            predicate = NSPredicate(format: "%K == %@", #keyPath(Package.recipient), recipient)
+        }
+        self.packagesRequest = FetchRequest<Package>(entity: Package.entity(),
+                                                     sortDescriptors: [NSSortDescriptor(keyPath: \Package.timestamp, ascending: false)],
+                                                     predicate: predicate,
+                                                     animation: .default)
+    }
     
     var body: some View {
         VStack {
@@ -50,6 +59,13 @@ struct PackagesView: View {
 struct PackagesView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        return PackagesView().environment(\.managedObjectContext, context)
+        let contact = Contact.init(context: context)
+        contact.firstName = "Justin"
+        contact.lastName = "Le"
+        contact.email = "justinqle@gmail.com"
+        contact.phoneNumber = "2404472771"
+        contact.buildingCode = "IRB"
+        contact.roomNumber = "5109"
+        return PackagesView(recipient: contact).environment(\.managedObjectContext, context)
     }
 }

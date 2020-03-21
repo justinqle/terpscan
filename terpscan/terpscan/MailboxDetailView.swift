@@ -83,7 +83,7 @@ struct MailboxDetailView: View {
                         }
                     }
                 }
-                PackagesView()
+                PackagesView(recipient: contact)
             }
             Spacer()
             HStack {
