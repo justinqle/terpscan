@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Contact" representedClassName="Contact" codeGenerationType="class">
+    <entity name="Mailbox" representedClassName="Mailbox" codeGenerationType="class">
         <attribute name="buildingCode" optional="YES" attributeType="String"/>
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
@@ -13,11 +13,11 @@
     <entity name="Package" representedClassName="Package" codeGenerationType="class">
         <attribute name="timestamp" attributeType="Date"/>
         <attribute name="trackingNumber" attributeType="String"/>
-        <relationship name="recipient" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="packages" inverseEntity="Contact"/>
+        <relationship name="recipient" maxCount="1" deletionRule="Nullify" destinationEntity="Mailbox" inverseName="packages" inverseEntity="Mailbox"/>
         <userInfo/>
     </entity>
     <elements>
-        <element name="Contact" positionX="564.53125" positionY="185.671875" width="128" height="148"/>
+        <element name="Mailbox" positionX="564.53125" positionY="185.671875" width="128" height="148"/>
         <element name="Package" positionX="256.3515625" positionY="193.44921875" width="128" height="88"/>
     </elements>
 </model>

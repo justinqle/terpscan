@@ -23,15 +23,15 @@ extension String {
 
 struct AddPackageView: View {
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Contact.lastName, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Mailbox.lastName, ascending: true)],
         animation: .default)
-    var contacts: FetchedResults<Contact>
+    var mailboxes: FetchedResults<Mailbox>
     
     @Environment(\.managedObjectContext) var viewContext
     
     @Binding var isPresented: Bool
     
-    @State var selectedRecipient: Contact?
+    @State var selectedRecipient: Mailbox?
     @State var trackingNumber: String = ""
     @State var isShowingScanner = false
     @State var selectedCarrier = 0
@@ -40,7 +40,7 @@ struct AddPackageView: View {
     var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
     var sizes = ["Small", "Medium", "Large"]
     
-    init(isPresented: Binding<Bool>, recipient: Contact?) {
+    init(isPresented: Binding<Bool>, recipient: Mailbox?) {
         _isPresented = isPresented
         _selectedRecipient = State.init(initialValue: recipient)
     }
@@ -50,11 +50,11 @@ struct AddPackageView: View {
             Form {
                 Section {
                     Picker(selection: $selectedRecipient, label: Text("Recipient")) {
-                        ForEach(contacts, id: \.self) { contact in
+                        ForEach(mailboxes, id: \.self) { mailbox in
                             HStack(spacing: 4) {
-                                Text("\(contact.firstName!)")
-                                Text("\(contact.lastName!)").fontWeight(.bold)
-                            }.tag(contact as Contact?)
+                                Text("\(mailbox.firstName!)")
+                                Text("\(mailbox.lastName!)").fontWeight(.bold)
+                            }.tag(mailbox as Mailbox?)
                         }
                     }
                 }
@@ -142,13 +142,13 @@ struct AddPackageView: View {
 struct AddPackageView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let contact = Contact.init(context: context)
-        contact.firstName = "Justin"
-        contact.lastName = "Le"
-        contact.email = "justinqle@gmail.com"
-        contact.phoneNumber = "2404472771"
-        contact.buildingCode = "IRB"
-        contact.roomNumber = "5109"
-        return AddPackageView(isPresented: .constant(true), recipient: contact).environment(\.managedObjectContext, context)
+        let mailbox = Mailbox.init(context: context)
+        mailbox.firstName = "Justin"
+        mailbox.lastName = "Le"
+        mailbox.email = "justinqle@gmail.com"
+        mailbox.phoneNumber = "2404472771"
+        mailbox.buildingCode = "IRB"
+        mailbox.roomNumber = "5109"
+        return AddPackageView(isPresented: .constant(true), recipient: mailbox).environment(\.managedObjectContext, context)
     }
 }

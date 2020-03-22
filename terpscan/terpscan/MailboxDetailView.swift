@@ -16,7 +16,7 @@ extension String {
 }
 
 struct MailboxDetailView: View {
-    @ObservedObject var contact: Contact
+    @ObservedObject var mailbox: Mailbox
     
     @Environment(\.managedObjectContext)
     var viewContext
@@ -29,18 +29,18 @@ struct MailboxDetailView: View {
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 5) {
                 Text("room").font(.subheadline).fontWeight(.light)
-                Text("\(contact.buildingCode!) \(contact.roomNumber!)")
+                Text("\(mailbox.buildingCode!) \(mailbox.roomNumber!)")
             }
             Divider()
             VStack(alignment: .leading, spacing: 5) {
                 Text("phone").font(.subheadline).fontWeight(.light)
                 Button(action: {
                     let tel = "tel://"
-                    let formattedString = tel + self.contact.phoneNumber!
+                    let formattedString = tel + self.mailbox.phoneNumber!
                     guard let url = URL(string: formattedString) else { return }
                     UIApplication.shared.open(url)
                 }) {
-                    Text("\(contact.phoneNumber!.toPhoneNumber())")
+                    Text("\(mailbox.phoneNumber!.toPhoneNumber())")
                 }
             }
             Divider()
@@ -60,18 +60,18 @@ struct MailboxDetailView: View {
                 }
                 Button(action: {
                     let tel = "mailto:"
-                    let formattedString = tel + self.contact.email!
+                    let formattedString = tel + self.mailbox.email!
                     guard let url = URL(string: formattedString) else { return }
                     UIApplication.shared.open(url)
                 }) {
-                    Text("\(contact.email!)")
+                    Text("\(mailbox.email!)")
                 }
             }
             Divider()
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Text("packages").font(.subheadline).fontWeight(.light)
-                    Text("(\(contact.packages?.count ?? 0))").font(.subheadline).fontWeight(.heavy)
+                    Text("(\(mailbox.packages?.count ?? 0))").font(.subheadline).fontWeight(.heavy)
                     Spacer()
                     Button(
                         action: {
@@ -83,7 +83,7 @@ struct MailboxDetailView: View {
                         }
                     }
                 }
-                PackagesView(recipient: contact)
+                PackagesView(recipient: mailbox)
             }
             Spacer()
             HStack {
@@ -107,11 +107,11 @@ struct MailboxDetailView: View {
                 }
                 .sheet(isPresented: $showingAddPackage) {
                     // FIXME: Workaround to package adding in modal with managedObjectContext
-                    AddPackageView(isPresented: self.$showingAddPackage, recipient: self.contact).environment(\.managedObjectContext, self.viewContext)
+                    AddPackageView(isPresented: self.$showingAddPackage, recipient: self.mailbox).environment(\.managedObjectContext, self.viewContext)
                 }
             }
         }.padding(15)
-            .navigationBarTitle("\(contact.firstName!) \(contact.lastName!)")
+            .navigationBarTitle("\(mailbox.firstName!) \(mailbox.lastName!)")
             .navigationBarItems(
                 trailing: EditButton()
         )
@@ -121,13 +121,13 @@ struct MailboxDetailView: View {
 struct MailboxDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let contact = Contact.init(context: context)
-        contact.firstName = "Justin"
-        contact.lastName = "Le"
-        contact.email = "justinqle@gmail.com"
-        contact.phoneNumber = "2404472771"
-        contact.buildingCode = "IRB"
-        contact.roomNumber = "5109"
-        return MailboxDetailView(contact: contact).environment(\.managedObjectContext, context)
+        let mailbox = Mailbox.init(context: context)
+        mailbox.firstName = "Justin"
+        mailbox.lastName = "Le"
+        mailbox.email = "justinqle@gmail.com"
+        mailbox.phoneNumber = "2404472771"
+        mailbox.buildingCode = "IRB"
+        mailbox.roomNumber = "5109"
+        return MailboxDetailView(mailbox: mailbox).environment(\.managedObjectContext, context)
     }
 }

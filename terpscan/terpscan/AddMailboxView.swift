@@ -60,7 +60,7 @@ struct AddMailboxView: View {
                             if buildingCode == "None" {
                                 buildingCode = nil
                             }
-                            withAnimation { Contact.create(in: self.viewContext,
+                            withAnimation { Mailbox.create(in: self.viewContext,
                                                            firstName: self.firstName,
                                                            lastName: self.lastName,
                                                            email: self.email,

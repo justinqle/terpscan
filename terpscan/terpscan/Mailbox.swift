@@ -1,5 +1,5 @@
 //
-//  Contact.swift
+//  Mailbox.swift
 //  terpscan
 //
 //  Created by Justin Le on 3/19/20.
@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreData
 
-extension Contact {
+extension Mailbox {
     static func create(in managedObjectContext: NSManagedObjectContext,
                        firstName: String,
                        lastName: String,
@@ -18,21 +18,21 @@ extension Contact {
                        buildingCode: String?,
                        roomNumber: String?,
                        packages: NSSet?) {
-        let newContact = self.init(context: managedObjectContext)
-        newContact.firstName = firstName
-        newContact.lastName = lastName
-        newContact.email = email
+        let newMailbox = self.init(context: managedObjectContext)
+        newMailbox.firstName = firstName
+        newMailbox.lastName = lastName
+        newMailbox.email = email
         if let phoneNumber = phoneNumber {
-            newContact.phoneNumber = phoneNumber
+            newMailbox.phoneNumber = phoneNumber
         }
         if let buildingCode = buildingCode {
-            newContact.buildingCode = buildingCode
+            newMailbox.buildingCode = buildingCode
         }
         if let roomNumber = roomNumber {
-            newContact.roomNumber = roomNumber
+            newMailbox.roomNumber = roomNumber
         }
         if let packages = packages {
-            newContact.packages = packages
+            newMailbox.packages = packages
         }
         
         do {
@@ -46,8 +46,8 @@ extension Contact {
     }
 }
 
-extension Collection where Element == Contact, Index == Int {
-    func deleteContact(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
+extension Collection where Element == Mailbox, Index == Int {
+    func deleteMailbox(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
         indices.forEach { managedObjectContext.delete(self[$0]) }
         
         do {

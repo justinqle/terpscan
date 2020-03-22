@@ -40,14 +40,14 @@ struct PackageDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let package = Package.init(context: context)
-        let contact = Contact.init(context: context)
-        contact.firstName = "Justin"
-        contact.lastName = "Le"
-        contact.email = "justinqle@gmail.com"
-        contact.phoneNumber = "2404472771"
-        contact.buildingCode = "IRB"
-        contact.roomNumber = "5109"
-        package.recipient = contact
+        let mailbox = Mailbox.init(context: context)
+        mailbox.firstName = "Justin"
+        mailbox.lastName = "Le"
+        mailbox.email = "justinqle@gmail.com"
+        mailbox.phoneNumber = "2404472771"
+        mailbox.buildingCode = "IRB"
+        mailbox.roomNumber = "5109"
+        package.recipient = mailbox
         package.trackingNumber = "1Z"
         package.timestamp = Date()
         return PackageDetailView(package: package).environment(\.managedObjectContext, context)

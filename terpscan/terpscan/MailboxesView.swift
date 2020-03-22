@@ -10,16 +10,16 @@ import SwiftUI
 
 struct MailboxesView: View {
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Contact.lastName, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Mailbox.lastName, ascending: true)],
         animation: .default)
-    var contacts: FetchedResults<Contact>
+    var mailboxes: FetchedResults<Mailbox>
     
     @Environment(\.managedObjectContext)
     var viewContext
     
     // Group Mailboxes by first letter of last name
-    private func groupby(_ result : FetchedResults<Contact>) -> [[Contact]] {
-        return Dictionary(grouping: result) { (element : Contact) in
+    private func groupby(_ result : FetchedResults<Mailbox>) -> [[Mailbox]] {
+        return Dictionary(grouping: result) { (element : Mailbox) in
             element.lastName!.first!
         }.values.map{$0}.sorted(by: { c1, c2 in return c1[0].lastName! < c2[0].lastName! })
     }
@@ -47,20 +47,20 @@ struct MailboxesView: View {
                     Text("Archive").fontWeight(.bold)
                 }
             }
-            ForEach(groupby(contacts), id: \.self) { (group: [Contact]) in
+            ForEach(groupby(mailboxes), id: \.self) { (group: [Mailbox]) in
                 Section(header: Text(String(group[0].lastName!.first!))) {
-                    ForEach(group, id: \.self) { contact in
+                    ForEach(group, id: \.self) { mailbox in
                         NavigationLink(
-                            destination: MailboxDetailView(contact: contact)
+                            destination: MailboxDetailView(mailbox: mailbox)
                         ) {
                             HStack(spacing: 4) {
-                                Text("\(contact.firstName!)")
-                                Text("\(contact.lastName!)").fontWeight(.bold)
+                                Text("\(mailbox.firstName!)")
+                                Text("\(mailbox.lastName!)").fontWeight(.bold)
                             }
                         }
                     }
                 }
-            }.id(contacts.count)
+            }.id(mailboxes.count)
         }
     }
 }

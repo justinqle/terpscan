@@ -18,7 +18,7 @@ struct PackagesView: View {
     
     @State public var selectedPackages = Set<Package>()
     
-    init(recipient: Contact?) {
+    init(recipient: Mailbox?) {
         var predicate: NSPredicate? = nil
         if let recipient = recipient {
             predicate = NSPredicate(format: "%K == %@", #keyPath(Package.recipient), recipient)
@@ -59,13 +59,13 @@ struct PackagesView: View {
 struct PackagesView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let contact = Contact.init(context: context)
-        contact.firstName = "Justin"
-        contact.lastName = "Le"
-        contact.email = "justinqle@gmail.com"
-        contact.phoneNumber = "2404472771"
-        contact.buildingCode = "IRB"
-        contact.roomNumber = "5109"
-        return PackagesView(recipient: contact).environment(\.managedObjectContext, context)
+        let mailbox = Mailbox.init(context: context)
+        mailbox.firstName = "Justin"
+        mailbox.lastName = "Le"
+        mailbox.email = "justinqle@gmail.com"
+        mailbox.phoneNumber = "2404472771"
+        mailbox.buildingCode = "IRB"
+        mailbox.roomNumber = "5109"
+        return PackagesView(recipient: mailbox).environment(\.managedObjectContext, context)
     }
 }

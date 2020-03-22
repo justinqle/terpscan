@@ -10,7 +10,7 @@
 		3214F00B2426B4F4004C2410 /* PackagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214F00A2426B4F4004C2410 /* PackagesView.swift */; };
 		3214F00D2426C3AA004C2410 /* PackageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214F00C2426C3AA004C2410 /* PackageDetailView.swift */; };
 		3219860224234B9C00F5D410 /* MailboxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219860124234B9C00F5D410 /* MailboxesView.swift */; };
-		3219860424234F2600F5D410 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219860324234F2600F5D410 /* Contact.swift */; };
+		3219860424234F2600F5D410 /* Mailbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219860324234F2600F5D410 /* Mailbox.swift */; };
 		3219860624240A7200F5D410 /* MailboxDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219860524240A7200F5D410 /* MailboxDetailView.swift */; };
 		32C8DA4F242171E300D49967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA4E242171E300D49967 /* AppDelegate.swift */; };
 		32C8DA52242171E300D49967 /* terpscan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */; };
@@ -48,7 +48,7 @@
 		3214F00A2426B4F4004C2410 /* PackagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesView.swift; sourceTree = "<group>"; };
 		3214F00C2426C3AA004C2410 /* PackageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDetailView.swift; sourceTree = "<group>"; };
 		3219860124234B9C00F5D410 /* MailboxesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailboxesView.swift; sourceTree = "<group>"; };
-		3219860324234F2600F5D410 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		3219860324234F2600F5D410 /* Mailbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mailbox.swift; sourceTree = "<group>"; };
 		3219860524240A7200F5D410 /* MailboxDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailboxDetailView.swift; sourceTree = "<group>"; };
 		32C8DA4B242171E300D49967 /* terpscan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = terpscan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C8DA4E242171E300D49967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				3214F00A2426B4F4004C2410 /* PackagesView.swift */,
 				3214F00C2426C3AA004C2410 /* PackageDetailView.swift */,
 				32C8DA952421F47F00D49967 /* AddPackageView.swift */,
-				3219860324234F2600F5D410 /* Contact.swift */,
+				3219860324234F2600F5D410 /* Mailbox.swift */,
 				32C8DA55242171E400D49967 /* Package.swift */,
 				32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */,
 				32C8DA59242171E600D49967 /* Assets.xcassets */,
@@ -303,7 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3214F00D2426C3AA004C2410 /* PackageDetailView.swift in Sources */,
-				3219860424234F2600F5D410 /* Contact.swift in Sources */,
+				3219860424234F2600F5D410 /* Mailbox.swift in Sources */,
 				32C8DA56242171E400D49967 /* Package.swift in Sources */,
 				32C8DA962421F47F00D49967 /* AddPackageView.swift in Sources */,
 				3214F00B2426B4F4004C2410 /* PackagesView.swift in Sources */,

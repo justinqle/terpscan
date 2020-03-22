@@ -31,7 +31,7 @@ struct ContentView: View {
                 VStack {
                     MailboxesView()
                         // FIXME: Workaround to add-cancel-add modal bug
-                        //.navigationBarTitle(Text("Contacts"), displayMode: .inline)
+                        //.navigationBarTitle(Text("Mailboxes"), displayMode: .inline)
                         .navigationBarTitle(Text("Mailboxes"), displayMode: .large)
                         .navigationBarItems(
                             trailing: Button(

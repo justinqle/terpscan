@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let faculty = json["faculty"] as? NSArray {
                         for staff in faculty {
                             if let staff = staff as? NSDictionary {
-                                let mailbox = Contact.init(context: context)
+                                let mailbox = Mailbox.init(context: context)
                                 mailbox.lastName = staff.object(forKey: "lastName") as? String
                                 mailbox.firstName = staff.object(forKey: "firstName") as? String
                                 mailbox.buildingCode = staff.object(forKey: "buildingCode") as? String
