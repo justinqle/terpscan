@@ -36,9 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 let mailbox = Mailbox.init(context: context)
                                 mailbox.lastName = staff.object(forKey: "lastName") as? String
                                 mailbox.firstName = staff.object(forKey: "firstName") as? String
-                                mailbox.buildingCode = staff.object(forKey: "buildingCode") as? String
-                                mailbox.roomNumber = staff.object(forKey: "roomNumber") as? String
-                                mailbox.phoneNumber = staff.object(forKey: "phoneNumber") as? String
+                                if let room = (staff.object(forKey: "room") as? String)?.split(separator: " ").map({String($0)}) {
+                                    mailbox.buildingCode = room[0]
+                                    mailbox.roomNumber = room[1]
+                                }
+                                mailbox.phoneNumber = (staff.object(forKey: "phone") as? String)?.replacingOccurrences(of: "\\((\\d{3})\\) (\\d{3})-(\\d+)", with: "$1$2$3", options: .regularExpression, range: nil)
                                 mailbox.email = staff.object(forKey: "email") as? String
                             }
                         }

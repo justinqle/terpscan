@@ -1,60 +1,1350 @@
 ﻿{
     "faculty": [
         {
+            "room": "IRB 5109",
+            "lastName": "Mailroom",
+            "firstName": "UMDCS",
+            "phone": "(301) 405-8821",
+            "email": "mailroomstaff@cs.umd.edu"
+        },
+        {
+            "room": "XXX 1120",
+            "lastName": "DIT Tech CSIC Help Desk",
+            "firstName": "UMDCS",
+            "phone": "(301) 405-3838",
+            "email": "itsupport@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5156",
             "lastName": "Abadi",
             "firstName": "Daniel",
-            "buildingCode": "IRB",
-            "roomNumber": "5156",
-            "phoneNumber": "3014059695",
+            "position": "Professor",
+            "phone": "(301) 405-9695",
             "email": "abadi@cs.umd.edu"
         },
         {
+            "room": "IRB 5204",
             "lastName": "Agrawala",
             "firstName": "Ashok",
-            "buildingCode": "IRB",
-            "roomNumber": "5204",
-            "phoneNumber": "3014052525",
+            "position": "Professor",
+            "phone": "(301) 405-2525",
             "email": "agrawala@cs.umd.edu"
         },
         {
+            "room": "ATL 3100E",
             "lastName": "Alagic",
             "firstName": "Gorjan",
-            "buildingCode": "ATL",
-            "roomNumber": "3100E",
-            "phoneNumber": "3013141763",
+            "position": "Affiliate Associate Research Scientist",
+            "phone": "(301) 314-1763",
             "email": "galagic@umd.edu"
         },
         {
+            "room": "IRB 4214",
             "lastName": "Aloimonos",
             "firstName": "John",
-            "buildingCode": "IRB",
-            "roomNumber": "4214",
-            "phoneNumber": "3014051743",
+            "position": "Professor",
+            "phone": "(301) 405-1743",
             "email": "yiannis@cs.umd.edu"
         },
         {
+            "room": "IRB 1202",
             "lastName": "Andrade",
             "firstName": "Amy",
-            "buildingCode": "IRB",
-            "roomNumber": "1202",
-            "phoneNumber": "3014052775",
+            "position": "Coordinator for Retention",
+            "phone": "(301) 405-2775",
             "email": "andradea@cs.umd.edu"
         },
         {
+            "room": "IRB 2164",
             "lastName": "Arbaugh",
             "firstName": "William",
-            "buildingCode": "IRB",
-            "roomNumber": "2164",
-            "phoneNumber": "3014057615",
+            "position": "Associate Professor Emeritus",
             "email": "waa@cs.umd.edu"
         },
         {
+            "room": "IRB 1206",
             "lastName": "Atchison",
             "firstName": "Kate",
-            "buildingCode": "IRB",
-            "roomNumber": "1206",
-            "phoneNumber": "3014056606",
+            "position": "Assistant Director for the Maryland Center for Women in Computing (MCWIC)",
+            "phone": "(301) 405-7615",
             "email": "katea@cs.umd.edu"
+        },
+        {
+            "room": "AVW 2247",
+            "lastName": "Baras",
+            "firstName": "John",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-6606",
+            "email": "baras@irs.umd.edu"
+        },
+        {
+            "room": "AVW 2361",
+            "lastName": "Barg",
+            "firstName": "Alexander",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-7135",
+            "email": "abarg@umd.edu"
+        },
+        {
+            "room": "IRB 2164",
+            "lastName": "Basili",
+            "firstName": "Victor",
+            "position": "Professor Emeritus",
+            "email": "basili@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5148",
+            "lastName": "Battle",
+            "firstName": "Leilani",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-8412",
+            "email": "leilani@cs.umd.edu"
+        },
+        {
+            "lastName": "Bederson",
+            "firstName": "Ben",
+            "position": "Professor Emeritus",
+            "email": "bederson@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5144",
+            "lastName": "Bera",
+            "firstName": "Aniket",
+            "position": "Affiliate Assistant Research Professor",
+            "email": "bera@umd.edu"
+        },
+        {
+            "room": "IRB 5218",
+            "lastName": "Bhatele",
+            "firstName": "Abhinav",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-4507",
+            "email": "bhatele@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5140",
+            "lastName": "Bhattacharjee",
+            "firstName": "Bobby",
+            "position": "Professor",
+            "phone": "(301) 405-1658",
+            "email": "bobby@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2254",
+            "lastName": "Bhattacherjee",
+            "firstName": "Souvik",
+            "position": "Research Associate",
+            "email": "bsouvik@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1138",
+            "lastName": "Blackwell",
+            "firstName": "Tori",
+            "position": "Academic Advisor",
+            "email": "tblackw@umd.edu"
+        },
+        {
+            "room": "IRB 4146",
+            "lastName": "Boyd-Graber",
+            "firstName": "Jordan",
+            "position": "Associate Professor",
+            "phone": "(301) 405-6766",
+            "email": "jbg@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1141",
+            "lastName": "Cabansag",
+            "firstName": "Courtney",
+            "position": "Academic Advisor",
+            "email": "cabansag@umd.edu"
+        },
+        {
+            "lastName": "Calderon",
+            "firstName": "Jose",
+            "position": "Adjunct Lecturer",
+            "email": "jmct@umd.edu"
+        },
+        {
+            "room": "MATH 4410",
+            "lastName": "Cameron",
+            "firstName": "Maria",
+            "position": "Affiliate Associate Professor",
+            "phone": "(301) 405-5068",
+            "email": "mariakc@umd.edu"
+        },
+        {
+            "room": "IRB 4130",
+            "lastName": "Carpuat",
+            "firstName": "Marine",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-8801",
+            "email": "marine@cs.umd.edu"
+        },
+        {
+            "lastName": "Castillo",
+            "firstName": "Carlos",
+            "position": "Adjunct Lecturer",
+            "email": "carlosc@umd.edu"
+        },
+        {
+            "room": "IRB 4246",
+            "lastName": "Chellappa",
+            "firstName": "Ramalingam",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-3656",
+            "email": "rama@cfar.umd.edu"
+        },
+        {
+            "room": "IRB 5124",
+            "lastName": "Chen",
+            "firstName": "Ray",
+            "position": "Faculty Research Assistant",
+            "phone": "(301) 405-2671",
+            "email": "rchen@cs.umd.edu"
+        },
+        {
+            "room": "ATL 3100F",
+            "lastName": "Childs",
+            "firstName": "Andrew",
+            "position": "Professor",
+            "phone": "(301) 405-2329",
+            "email": "amchilds@cs.umd.edu"
+        },
+        {
+            "room": "HBK 2117F",
+            "lastName": "Choe",
+            "firstName": "Eun Kyoung",
+            "position": "Affiliate Assistant Professor",
+            "email": "choe@umd.edu"
+        },
+        {
+            "room": "IRB 5160",
+            "lastName": "Cleaveland",
+            "firstName": "Rance",
+            "position": "Professor",
+            "phone": "(301) 405-8572",
+            "email": "rance@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2142",
+            "lastName": "Cornett",
+            "firstName": "Regis",
+            "position": "Research Coordinator",
+            "phone": "(301) 405-2732",
+            "email": "rcornett@umd.edu"
+        },
+        {
+            "room": "IRB 3226",
+            "lastName": "Corrada Bravo",
+            "firstName": "Hector",
+            "position": "Associate Professor",
+            "phone": "(301) 405-6713",
+            "email": "hcorrada@umiacs.umd.edu"
+        },
+        {
+            "lastName": "Coudron",
+            "firstName": "Matthew",
+            "position": "Adjunct Assistant Professor",
+            "email": "mcoudron@umd.edu"
+        },
+        {
+            "room": "AVW 3419",
+            "lastName": "Cukier",
+            "firstName": "Michel",
+            "position": "Affiliate Associate Professor",
+            "phone": "(301) 314-2804",
+            "email": "mcukier@umd.edu"
+        },
+        {
+            "room": "IRB 3240",
+            "lastName": "Cummings",
+            "firstName": "Michael",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-9903",
+            "email": "mike@umiacs.umd.edu"
+        },
+        {
+            "room": "IRB 5238",
+            "lastName": "Dachman-Soled",
+            "firstName": "Dana",
+            "position": "Affiliate Assistant Professor",
+            "phone": "(301) 405-0794",
+            "email": "danadach@umd.edu"
+        },
+        {
+            "room": "IRB 4150",
+            "lastName": "Daumé",
+            "firstName": "Hal",
+            "position": "Professor",
+            "phone": "(301) 405-1073",
+            "email": "hal@umiacs.umd.edu"
+        },
+        {
+            "room": "IRB 4248",
+            "lastName": "Davis",
+            "firstName": "Larry",
+            "position": "Professor",
+            "phone": "(301) 405-6718",
+            "email": "lsd@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4132",
+            "lastName": "De Floriani",
+            "firstName": "Leila",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-4391",
+            "email": "deflo@umiacs.umd.edu"
+        },
+        {
+            "room": "IRB 2252",
+            "lastName": "Dechter",
+            "firstName": "Rina",
+            "position": "Adjunct Professor",
+            "email": "rdechter@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1139",
+            "lastName": "Denis",
+            "firstName": "Christine",
+            "position": "Academic Advisor",
+            "phone": "(301) 405-6778",
+            "email": "cdenis@umd.edu"
+        },
+        {
+            "room": "IRB 5154",
+            "lastName": "Deshpande",
+            "firstName": "Amol",
+            "position": "Professor",
+            "phone": "(301) 405-2703",
+            "email": "amol@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4128",
+            "lastName": "Dickerson",
+            "firstName": "John",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-2774",
+            "email": "john@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4132",
+            "lastName": "Dorr",
+            "firstName": "Bonnie",
+            "position": "Professor Emerita",
+            "email": "bonnie@cs.umd.edu"
+        },
+        {
+            "lastName": "Druschel",
+            "firstName": "Peter",
+            "position": "Adjunct Professor",
+            "email": "pdrusche@umd.edu"
+        },
+        {
+            "room": "IRB 5228",
+            "lastName": "Dumitras",
+            "firstName": "Tudor",
+            "position": "Affiliate Associate Professor",
+            "phone": "(301) 405-7466",
+            "email": "tdumitra@umd.edu"
+        },
+        {
+            "room": "IRB 4244",
+            "lastName": "Duraiswami",
+            "firstName": "Ramani",
+            "position": "Professor",
+            "phone": "(301) 405-6710",
+            "email": "ramani@umiacs.umd.edu"
+        },
+        {
+            "room": "IRB 1126",
+            "lastName": "Eastman",
+            "firstName": "Roger",
+            "position": "Professor of the Practice",
+            "phone": "(301) 405-2773",
+            "email": "reastman@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4210",
+            "lastName": "Elman",
+            "firstName": "Howard",
+            "position": "Professor",
+            "phone": "(301) 405-2694",
+            "email": "elman@cs.umd.edu"
+        },
+        {
+            "room": "HBK 2117H",
+            "lastName": "Elmqvist",
+            "firstName": "Niklas",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-2033",
+            "email": "elm@umd.edu"
+        },
+        {
+            "room": "IRB 2212",
+            "lastName": "Emad",
+            "firstName": "Fawzi",
+            "position": "Senior Lecturer",
+            "phone": "(301) 405-2709",
+            "email": "fpe@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4202",
+            "lastName": "Feizi",
+            "firstName": "Soheil",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-8743",
+            "email": "sfeizi@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4140",
+            "lastName": "Feldman",
+            "firstName": "Naomi",
+            "position": "Affiliate Associate Professor",
+            "phone": "(301) 405-5800",
+            "email": "nhf@umd.edu"
+        },
+        {
+            "room": "IRB 2206",
+            "lastName": "Filippou",
+            "firstName": "Jason",
+            "position": "Lecturer",
+            "phone": "(301) 405-2726",
+            "email": "jasonfil@cs.umd.edu"
+        },
+        {
+            "lastName": "Findlater",
+            "firstName": "Leah",
+            "position": "Adjunct Associate Professor",
+            "email": "leahkf@umd.edu"
+        },
+        {
+            "room": "IRB 2130",
+            "lastName": "Findlay",
+            "firstName": "Adelaide",
+            "position": "Program Management Specialist",
+            "phone": "(301) 405-2662",
+            "email": "adelaide@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2162",
+            "lastName": "Foster",
+            "firstName": "Jeffrey",
+            "position": "Adjunct Professor",
+            "phone": "(301) 405-2751",
+            "email": "jfoster@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4144",
+            "lastName": "Frias-Martinez",
+            "firstName": "Vanessa",
+            "position": "Affiliate Assistant Professor",
+            "phone": "(301) 405-2032",
+            "email": "vfrias@umd.edu"
+        },
+        {
+            "room": "IRB 2202",
+            "lastName": "Friedman",
+            "firstName": "Miriam",
+            "position": "Community Relations & Special Events Coordinator",
+            "phone": "(301) 405-0688",
+            "email": "mfried@cs.umd.edu"
+        },
+        {
+            "lastName": "Froehlich",
+            "firstName": "Jon",
+            "position": "Adjunct Associate Professor",
+            "email": "jonf@cs.washington.edu"
+        },
+        {
+            "room": "IRB 2242",
+            "lastName": "Gasarch",
+            "firstName": "William",
+            "position": "Professor",
+            "phone": "(301) 405-2698",
+            "email": "gasarch@cs.umd.edu"
+        },
+        {
+            "lastName": "Getoor",
+            "firstName": "Lise",
+            "position": "Adjunct Professor",
+            "email": "getoor@cs.umd.edu"
+        },
+        {
+            "lastName": "Gilkeson",
+            "firstName": "J. Scott",
+            "position": "Adjunct Lecturer",
+            "email": "sgilkeso@umd.edu"
+        },
+        {
+            "room": "HBK 2118F",
+            "lastName": "Golbeck",
+            "firstName": "Jennifer",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-7185",
+            "email": "jgolbeck@umd.edu"
+        },
+        {
+            "room": "IRB 4212",
+            "lastName": "Goldstein",
+            "firstName": "Tom",
+            "position": "Associate Professor",
+            "phone": "(301) 405-0053",
+            "email": "tomg@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1210",
+            "lastName": "Golub",
+            "firstName": "Evan",
+            "position": "Principal Lecturer",
+            "phone": "(301) 405-0180",
+            "email": "egolub@cs.umd.edu"
+        },
+        {
+            "lastName": "Gonzalez",
+            "firstName": "Elias",
+            "position": "Adjunct Lecturer",
+            "email": "egonzal5@umd.edu"
+        },
+        {
+            "room": "AVW 3204",
+            "lastName": "Gordon",
+            "firstName": "Dov",
+            "position": "Visiting Senior Research Scientist",
+            "phone": "(301) 405-7388",
+            "email": "gordon@cs.umd.edu"
+        },
+        {
+            "lastName": "Grant",
+            "firstName": "John",
+            "position": "Adjunct Professor",
+            "phone": "(301) 405-0689",
+            "email": "grant@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2144",
+            "lastName": "Gray",
+            "firstName": "Jodie",
+            "position": "Payroll Coordinator",
+            "phone": "(301) 405-2733",
+            "email": "jodie@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5158",
+            "lastName": "Hajiaghayi",
+            "firstName": "Mohammad",
+            "position": "Professor",
+            "phone": "(301) 405-6724",
+            "email": "hajiagha@cs.umd.edu"
+        },
+        {
+            "lastName": "Harris",
+            "firstName": "David",
+            "position": "Adjunct Lecturer",
+            "email": "dharris7@umd.edu"
+        },
+        {
+            "room": "IRB 1124",
+            "lastName": "Herman",
+            "firstName": "Larry",
+            "position": "Lecturer",
+            "phone": "(301) 405-2762",
+            "email": "larry@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5246",
+            "lastName": "Hicks",
+            "firstName": "Michael",
+            "position": "Professor",
+            "phone": "(301) 405-2710",
+            "email": "mwh@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2152",
+            "lastName": "Holden",
+            "firstName": "Todd",
+            "position": "Senior Web Services Developer",
+            "phone": "(301) 405-6338",
+            "email": "holden@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5152",
+            "lastName": "Hollingsworth",
+            "firstName": "Jeffrey K.",
+            "position": "Professor",
+            "phone": "(301) 405-7700",
+            "email": "hollings@umd.edu"
+        },
+        {
+            "lastName": "Horty",
+            "firstName": "John",
+            "position": "Affiliate Professor",
+            "email": "horty@umd.edu"
+        },
+        {
+            "room": "IRB 4204",
+            "lastName": "Huang",
+            "firstName": "Furong",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-8010",
+            "email": "furongh@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1250",
+            "lastName": "Hugue",
+            "firstName": "Michelle",
+            "position": "Lecturer",
+            "phone": "(301) 405-3012",
+            "email": "meesh@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1130",
+            "lastName": "Hurst",
+            "firstName": "Tom",
+            "position": "Assistant Director of Graduate Education",
+            "phone": "(301) 405-0771",
+            "email": "thurst@umd.edu"
+        },
+        {
+            "room": "IRB 2156",
+            "lastName": "Ivanov",
+            "firstName": "Sergey",
+            "position": "IT Systems Analyst",
+            "phone": "(301) 405-2749",
+            "email": "seriv@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4240",
+            "lastName": "Jacobs",
+            "firstName": "David",
+            "position": "Professor",
+            "phone": "(301) 405-0679",
+            "email": "djacobs@cs.umd.edu"
+        },
+        {
+            "room": "XXX 3261",
+            "lastName": "Jalali",
+            "firstName": "Aliakbar",
+            "position": "Visiting Professor",
+            "phone": "(301) 405-2674",
+            "email": "drjalali@umd.edu"
+        },
+        {
+            "room": "IRB 2128",
+            "lastName": "Johnson",
+            "firstName": "Maria",
+            "position": "Director of Corporate Partnership Development",
+            "phone": "(301) 405-7990",
+            "email": "mjohn@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1144",
+            "lastName": "Johnson",
+            "firstName": "Brittany",
+            "position": "Academic Advisor",
+            "phone": "(301) 405-2692",
+            "email": "johnsobr@umd.edu"
+        },
+        {
+            "room": "XXX 2118A\r\nHornbake Building South Wing",
+            "lastName": "Kacorri",
+            "firstName": "Hernisa",
+            "position": "Affiliate Assistant Professor",
+            "phone": "(301) 405-2032",
+            "email": "hernisa@umd.edu"
+        },
+        {
+            "room": "IRB 2162",
+            "lastName": "Kanal",
+            "firstName": "Laveen",
+            "position": "Professor Emeritus",
+            "phone": "(301) 405-2674",
+            "email": "kanal@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5226",
+            "lastName": "Katz",
+            "firstName": "Jonathan",
+            "position": "Visiting Professor",
+            "phone": "(301) 405-1226",
+            "email": "jkatz@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5146",
+            "lastName": "Keleher",
+            "firstName": "Pete",
+            "position": "Associate Professor",
+            "phone": "(301) 405-0345",
+            "email": "keleher@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5128",
+            "lastName": "Khuller",
+            "firstName": "Samir",
+            "position": "Professor Emeritus",
+            "phone": "(301) 405-6765",
+            "email": "samir@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2240",
+            "lastName": "Kruskal",
+            "firstName": "Clyde",
+            "position": "Associate Professor",
+            "phone": "(301) 405-2683",
+            "email": "kruskal@cs.umd.edu"
+        },
+        {
+            "room": "AVW 3217",
+            "lastName": "Kwon",
+            "firstName": "Tae Wook",
+            "position": "Visiting Associate Professor",
+            "phone": "(301) 405-2774",
+            "email": "kwon@cs.umd.eu"
+        },
+        {
+            "room": "CSS 3100G",
+            "lastName": "Lackey",
+            "firstName": "Brad",
+            "position": "Adjunct Professor",
+            "phone": "(301) 314-1819",
+            "email": "bclackey@umd.edu"
+        },
+        {
+            "room": "IRB 5248",
+            "lastName": "Lampropoulos",
+            "firstName": "Leonidas",
+            "position": "Research Associate",
+            "email": "leonidas@umd.edu"
+        },
+        {
+            "room": "XXX 2117D\r\nHornbake Library South Wing  4130 Campus Dr.",
+            "lastName": "Lazar",
+            "firstName": "Amanda",
+            "position": "Affiliate Assistant Professor",
+            "phone": "(301) 450-2033",
+            "email": "lazar@umd.edu"
+        },
+        {
+            "room": "IRB 3244",
+            "lastName": "Leiserson",
+            "firstName": "Max",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-7395",
+            "email": "mdml@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5222",
+            "lastName": "Levin",
+            "firstName": "Dave",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-8515",
+            "email": "dml@cs.umd.edu"
+        },
+        {
+            "lastName": "Lichtman",
+            "firstName": "Marc",
+            "position": "Adjunct Assistant Professor",
+            "email": "sdr@umd.edu"
+        },
+        {
+            "room": "IRB 1140",
+            "lastName": "Lightfoot- Solomon",
+            "firstName": "Natalie",
+            "position": "Academic Advisor",
+            "email": "nlightfo@umd.edu"
+        },
+        {
+            "room": "IRB 2134",
+            "lastName": "Lin",
+            "firstName": "Ming",
+            "position": "Professor",
+            "phone": "(301) 405-2662",
+            "email": "lin@cs.umd.edu"
+        },
+        {
+            "lastName": "Lindvall",
+            "firstName": "Mikael",
+            "position": "Adjunct Professor",
+            "phone": "(301) 314-6052",
+            "email": "mikli@fc-md.umd.edu"
+        },
+        {
+            "room": "ATL 3100J",
+            "lastName": "Liu",
+            "firstName": "Yi-Kai",
+            "position": "Adjunct Associate Professor",
+            "phone": "(301) 314-1850",
+            "email": "yikailiu@umd.edu"
+        },
+        {
+            "room": "IRB 1212",
+            "lastName": "Mamat",
+            "firstName": "Anwar",
+            "position": "Senior Lecturer",
+            "phone": "(301) 405-2696",
+            "email": "anwar@cs.umd.edu"
+        },
+        {
+            "lastName": "Manly",
+            "firstName": "Jennifer",
+            "position": "Adjunct Lecturer",
+            "email": "jmanly@umd.edu"
+        },
+        {
+            "room": "IRB 5164",
+            "lastName": "Manocha",
+            "firstName": "Dinesh",
+            "position": "Professor",
+            "phone": "(301) 405-2741",
+            "email": "dm@cs.umd.edu"
+        },
+        {
+            "room": "HBK 4113",
+            "lastName": "Marciano",
+            "firstName": "Richard",
+            "position": "Affiliate Professor",
+            "phone": "(301) 314-0281",
+            "email": "marciano@umd.edu"
+        },
+        {
+            "room": "IRB 2218",
+            "lastName": "Marsh",
+            "firstName": "Michael",
+            "position": "Lecturer",
+            "phone": "(301) 405-7445,\r\n2402702276",
+            "email": "mmarsh@cs.umd.edu"
+        },
+        {
+            "room": "XXX 4105",
+            "lastName": "Marzullo",
+            "firstName": "Keith",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-2033",
+            "email": "marzullo@umd.edu"
+        },
+        {
+            "room": "IRB 2132",
+            "lastName": "Mathur",
+            "firstName": "Richa",
+            "position": "Executive Coordinator",
+            "phone": "(301) 405-1034",
+            "email": "rmathur4@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5236",
+            "lastName": "Mazurek",
+            "firstName": "Michelle",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-6463",
+            "email": "mmazurek@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2138",
+            "lastName": "McElroy",
+            "firstName": "Sharron",
+            "position": "Director of Operations and Finance",
+            "phone": "(301) 405-8699",
+            "email": "smcelroy@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5206",
+            "lastName": "Memon",
+            "firstName": "Atif",
+            "position": "Professor",
+            "phone": "(301) 405-3071",
+            "email": "atif@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5242",
+            "lastName": "Miers",
+            "firstName": "Ian",
+            "position": "Visiting Assistant Professor",
+            "email": "imiers@cs.umd.edu"
+        },
+        {
+            "room": "ATL 3102",
+            "lastName": "Miller",
+            "firstName": "Carl",
+            "position": "Adjunct Assistant Professor",
+            "phone": "(301) 405-7367",
+            "email": "camiller@umd.edu"
+        },
+        {
+            "lastName": "Miller",
+            "firstName": "Raymond",
+            "position": "Professor Emeritus",
+            "email": "miller@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2162",
+            "lastName": "Minker",
+            "firstName": "Jack",
+            "position": "Professor Emeritus",
+            "phone": "(301) 405-2676",
+            "email": "minker@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4162",
+            "lastName": "Mount",
+            "firstName": "David",
+            "position": "Professor",
+            "phone": "(301) 405-2704",
+            "email": "mount@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4158",
+            "lastName": "Nau",
+            "firstName": "Dana",
+            "position": "Professor",
+            "phone": "(301) 405-2684",
+            "email": "nau@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1146",
+            "lastName": "Neuner",
+            "firstName": "Alyssa",
+            "position": "Senior Academic Advisor",
+            "phone": "(301) 405-2672",
+            "email": "aneuner@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2160",
+            "lastName": "O'Leary",
+            "firstName": "Dianne",
+            "position": "Professor Emerita",
+            "phone": "(301) 405-2678",
+            "email": "oleary@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4142",
+            "lastName": "Oard",
+            "firstName": "Doug",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-5582",
+            "email": "oard@umd.edu"
+        },
+        {
+            "room": "IRB 2254",
+            "lastName": "Onwunta",
+            "firstName": "Akwum",
+            "position": "Research Associate",
+            "phone": "(301) 405-6762",
+            "email": "onwunta@umd.edu"
+        },
+        {
+            "room": "KEB 3242",
+            "lastName": "Otte",
+            "firstName": "Michael",
+            "position": "Affiliate Assistant Professor",
+            "phone": "(301) 405-2723",
+            "email": "otte@umd.edu"
+        },
+        {
+            "room": "IRB 2210",
+            "lastName": "Padua-Perez",
+            "firstName": "Nelson",
+            "position": "Senior Lecturer",
+            "phone": "(301) 405-4539",
+            "email": "nelson@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5224",
+            "lastName": "Papamanthou",
+            "firstName": "Charalampos (Babis)",
+            "position": "Affiliate Associate Professor",
+            "phone": "(301) 405-7212",
+            "email": "cpap@umd.edu"
+        },
+        {
+            "room": "IRB 3220",
+            "lastName": "Patro",
+            "firstName": "Rob",
+            "position": "Assistant Professor",
+            "email": "rob@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4206",
+            "lastName": "Peng",
+            "firstName": "Huaishu",
+            "position": "Assistant Professor",
+            "email": "huaishu@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4156",
+            "lastName": "Perlis",
+            "firstName": "Don",
+            "position": "Professor",
+            "phone": "(301) 405-2685",
+            "email": "perlis@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1132",
+            "lastName": "Pimpawathin",
+            "firstName": "Apitchaya",
+            "position": "Assistant Director Undergraduate Studies",
+            "phone": "(301) 405-2681",
+            "email": "apimpawa@umd.edu"
+        },
+        {
+            "room": "IRB 1254",
+            "lastName": "Plane",
+            "firstName": "Jandelyn",
+            "position": "Principal Lecturer",
+            "phone": "(301) 405-2754",
+            "email": "jplane@cs.umd.edu"
+        },
+        {
+            "room": "IRB 3222",
+            "lastName": "Pop",
+            "firstName": "Mihai",
+            "position": "Professor",
+            "phone": "(301) 405-6722",
+            "email": "mpop@umiacs.umd.edu"
+        },
+        {
+            "room": "IRB 5212",
+            "lastName": "Porter",
+            "firstName": "Adam",
+            "position": "Professor",
+            "phone": "(301) 405-2702",
+            "email": "aporter@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2164",
+            "lastName": "Pugh",
+            "firstName": "William",
+            "position": "Professor Emeritus",
+            "email": "pugh@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5214",
+            "lastName": "Purtilo",
+            "firstName": "James",
+            "position": "Associate Professor",
+            "phone": "(301) 405-2706",
+            "email": "purtilo@cs.umd.edu"
+        },
+        {
+            "room": "AVW 1417",
+            "lastName": "Qu",
+            "firstName": "Gang",
+            "position": "Affiliate Professor",
+            "email": "gangqu@umd.edu"
+        },
+        {
+            "room": "IRB 5248",
+            "lastName": "Rand",
+            "firstName": "Robert",
+            "position": "Research Associate",
+            "email": "rrand@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4154",
+            "lastName": "Raschid",
+            "firstName": "Louiqa",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-6747",
+            "email": "louiqa@umiacs.cs.umd.edu"
+        },
+        {
+            "room": "IRB 4124",
+            "lastName": "Reggia",
+            "firstName": "James",
+            "position": "Professor",
+            "phone": "(301) 405-2686",
+            "email": "reggia@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4152",
+            "lastName": "Regli",
+            "firstName": "William",
+            "position": "Professor",
+            "phone": "(301) 405-6738",
+            "email": "regli@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4148",
+            "lastName": "Resnik",
+            "firstName": "Philip",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-7002",
+            "email": "resnik@umd.edu"
+        },
+        {
+            "room": "IRB 2160",
+            "lastName": "Roussopoulos",
+            "firstName": "Nicholas",
+            "position": "Professor Emeritus",
+            "phone": "(301) 405-2687",
+            "email": "nick@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5240",
+            "lastName": "Roy",
+            "firstName": "Nirupam",
+            "position": "Assistant Professor",
+            "email": "nirupam@cs.umd.edu"
+        },
+        {
+            "lastName": "Ruppin",
+            "firstName": "Eytan",
+            "position": "Adjunct Professor",
+            "email": "ruppin@umiacs.umd.edu"
+        },
+        {
+            "room": "IRB 2158",
+            "lastName": "Ryan",
+            "firstName": "Steven",
+            "position": "IT Systems Analyst",
+            "phone": "(301) 405-2705",
+            "email": "stryan@cs.umd.edu"
+        },
+        {
+            "lastName": "Rytting",
+            "firstName": "C. Anton",
+            "position": "Adjunct Lecturer",
+            "email": "crytting@umd.edu"
+        },
+        {
+            "room": "IRB 2214",
+            "lastName": "Sadeghian",
+            "firstName": "Pedram",
+            "position": "Lecturer",
+            "phone": "(301) 405-2740",
+            "email": "pedram@cs.umd.edu"
+        },
+        {
+            "lastName": "Sahinalp",
+            "firstName": "S. Cenk",
+            "position": "Adjunct Professor",
+            "email": "cenk.sahinalp@nih.gov"
+        },
+        {
+            "room": "IRB 4252",
+            "lastName": "Samet",
+            "firstName": "Hanan",
+            "position": "Professor",
+            "phone": "(301) 405-1755",
+            "email": "hjs@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1252",
+            "lastName": "Sazawal",
+            "firstName": "Vibha",
+            "position": "Lecturer",
+            "email": "vibha@umd.edu"
+        },
+        {
+            "room": "IRB 5150",
+            "lastName": "Shankar",
+            "firstName": "A. Udaya",
+            "position": "Professor",
+            "phone": "(301) 405-2688",
+            "email": "shankar@cs.umd.edu"
+        },
+        {
+            "lastName": "Shi",
+            "firstName": "Elaine",
+            "position": "Adjunct Associate Professor",
+            "email": "runting@gmail.com"
+        },
+        {
+            "room": "IRB 2162",
+            "lastName": "Shneiderman",
+            "firstName": "Ben",
+            "position": "Professor Emeritus",
+            "phone": "(301) 405-2680",
+            "email": "ben@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4238",
+            "lastName": "Shrivastava",
+            "firstName": "Abhinav",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-7952",
+            "email": "abhinav@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2124",
+            "lastName": "Sickels Locke",
+            "firstName": "Stacey",
+            "position": "Senior Director of Development",
+            "phone": "(301) 405-7889",
+            "email": "slocke@umd.edu"
+        },
+        {
+            "room": "IRB 2154",
+            "lastName": "Smith",
+            "firstName": "Richard",
+            "position": "IT Systems Analyst",
+            "phone": "(301) 405-2668",
+            "email": "rismith@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5138",
+            "lastName": "Spring",
+            "firstName": "Neil",
+            "position": "Professor",
+            "phone": "(301) 405-2909",
+            "email": "nspring@cs.umd.edu"
+        },
+        {
+            "room": "IRB 4164",
+            "lastName": "Srinivasan",
+            "firstName": "Aravind",
+            "position": "Professor",
+            "phone": "(301) 405-2695",
+            "email": "srin@cs.umd.edu"
+        },
+        {
+            "lastName": "Srivastava",
+            "firstName": "Ankur",
+            "position": "Affiliate Professor",
+            "email": "ankurs@umd.edu"
+        },
+        {
+            "room": "IRB 2109",
+            "lastName": "STAFFWORLD",
+            "firstName": "~",
+            "position": "Computing Staff",
+            "phone": "(301) 405-2720",
+            "email": "helpdesk@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2162",
+            "lastName": "Stewart",
+            "firstName": "G.W. (Pete)",
+            "position": "Professor Emeritus",
+            "phone": "(301) 405-2681",
+            "email": "stewart@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5142",
+            "lastName": "Sussman",
+            "firstName": "Alan",
+            "position": "Professor",
+            "phone": "(301) 405-3360",
+            "email": "als@cs.umd.edu"
+        },
+        {
+            "room": "IRB 1128",
+            "lastName": "Teli",
+            "firstName": "Mohammad Nayeem",
+            "position": "Lecturer",
+            "phone": "(301) 405-0405",
+            "email": "nayeem@umd.edu"
+        },
+        {
+            "lastName": "Thirumazhusai",
+            "firstName": "Namachivayam",
+            "position": "Visiting Assistant Research Scientist",
+            "email": "sthiruma@umd.edu"
+        },
+        {
+            "room": "IRB 4222",
+            "lastName": "Tokekar",
+            "firstName": "Pratap",
+            "position": "Assistant Professor",
+            "phone": "(301) 405-9902",
+            "email": "tokekar@umd.edu"
+        },
+        {
+            "room": "IRB 1148",
+            "lastName": "Turner",
+            "firstName": "David",
+            "position": "Senior Academic Advisor",
+            "phone": "(301) 405-2672",
+            "email": "dturner8@umd.edu"
+        },
+        {
+            "room": "IRB 1142",
+            "lastName": "Vaillancourt",
+            "firstName": "Amy",
+            "position": "Academic Advisor",
+            "phone": "(301) 405-2672",
+            "email": "availlan@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5250",
+            "lastName": "Van Horn",
+            "firstName": "David",
+            "position": "Associate Professor",
+            "phone": "(301) 405-2715",
+            "email": "dvanhorn@cs.umd.edu"
+        },
+        {
+            "lastName": "Vanhoy",
+            "firstName": "Garrett",
+            "position": "Adjunct Lecturer",
+            "email": "gvanhoy@umd.edu"
+        },
+        {
+            "room": "IRB 3212",
+            "lastName": "Varshney",
+            "firstName": "Amitabh",
+            "position": "Professor",
+            "phone": "(301) 405-6761\r\n(301) 405-2316",
+            "email": "varshney@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5216",
+            "lastName": "Vishkin",
+            "firstName": "Uzi",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-6763",
+            "email": "vishkin@umiacs.umd.edu"
+        },
+        {
+            "room": "IRB 2142",
+            "lastName": "Williams",
+            "firstName": "LaVita",
+            "position": "Business Services Specialist",
+            "email": "lavitaw@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2150",
+            "lastName": "Worden",
+            "firstName": "Jeanine",
+            "position": "Lab Director",
+            "phone": "(301) 405-5062",
+            "email": "jworden@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5210",
+            "lastName": "Wu",
+            "firstName": "Xiaodi",
+            "position": "Assistant Professor",
+            "email": "xwu@cs.umd.edu"
+        },
+        {
+            "room": "AVW 1327",
+            "lastName": "Yeung",
+            "firstName": "Donald",
+            "position": "Affiliate Professor",
+            "phone": "(301) 405-3649",
+            "email": "yeung@glue.umd.edu"
+        },
+        {
+            "room": "IRB 1248",
+            "lastName": "Yoon",
+            "firstName": "Ilchul",
+            "position": "Lecturer",
+            "email": "iyoon@cs.umd.edu"
+        },
+        {
+            "room": "IRB 2160",
+            "lastName": "Zelkowitz",
+            "firstName": "Marvin",
+            "position": "Professor Emeritus",
+            "phone": "(301) 405-2690",
+            "email": "mvz@cs.umd.edu"
+        },
+        {
+            "room": "IRB 5244",
+            "lastName": "Zwicker",
+            "firstName": "Matthias",
+            "position": "Professor",
+            "phone": "(301) 405-0319",
+            "email": "zwicker@cs.umd.edu"
         }
     ]
 }

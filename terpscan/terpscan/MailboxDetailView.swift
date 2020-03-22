@@ -29,7 +29,7 @@ struct MailboxDetailView: View {
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 5) {
                 Text("room").font(.subheadline).fontWeight(.light)
-                Text("\(mailbox.buildingCode!) \(mailbox.roomNumber!)")
+                Text("\(mailbox.buildingCode ?? "") \(mailbox.roomNumber ?? "")")
             }
             Divider()
             VStack(alignment: .leading, spacing: 5) {
@@ -40,7 +40,7 @@ struct MailboxDetailView: View {
                     guard let url = URL(string: formattedString) else { return }
                     UIApplication.shared.open(url)
                 }) {
-                    Text("\(mailbox.phoneNumber!.toPhoneNumber())")
+                    Text("\(mailbox.phoneNumber?.toPhoneNumber() ?? "")")
                 }
             }
             Divider()
