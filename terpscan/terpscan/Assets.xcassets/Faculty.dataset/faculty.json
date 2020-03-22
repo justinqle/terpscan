@@ -1,0 +1,60 @@
+﻿{
+    "faculty": [
+        {
+            "lastName": "Abadi",
+            "firstName": "Daniel",
+            "buildingCode": "IRB",
+            "roomNumber": "5156",
+            "phoneNumber": "3014059695",
+            "email": "abadi@cs.umd.edu"
+        },
+        {
+            "lastName": "Agrawala",
+            "firstName": "Ashok",
+            "buildingCode": "IRB",
+            "roomNumber": "5204",
+            "phoneNumber": "3014052525",
+            "email": "agrawala@cs.umd.edu"
+        },
+        {
+            "lastName": "Alagic",
+            "firstName": "Gorjan",
+            "buildingCode": "ATL",
+            "roomNumber": "3100E",
+            "phoneNumber": "3013141763",
+            "email": "galagic@umd.edu"
+        },
+        {
+            "lastName": "Aloimonos",
+            "firstName": "John",
+            "buildingCode": "IRB",
+            "roomNumber": "4214",
+            "phoneNumber": "3014051743",
+            "email": "yiannis@cs.umd.edu"
+        },
+        {
+            "lastName": "Andrade",
+            "firstName": "Amy",
+            "buildingCode": "IRB",
+            "roomNumber": "1202",
+            "phoneNumber": "3014052775",
+            "email": "andradea@cs.umd.edu"
+        },
+        {
+            "lastName": "Arbaugh",
+            "firstName": "William",
+            "buildingCode": "IRB",
+            "roomNumber": "2164",
+            "phoneNumber": "3014057615",
+            "email": "waa@cs.umd.edu"
+        },
+        {
+            "lastName": "Atchison",
+            "firstName": "Kate",
+            "buildingCode": "IRB",
+            "roomNumber": "1206",
+            "phoneNumber": "3014056606",
+            "email": "katea@cs.umd.edu"
+        }
+    ]
+}

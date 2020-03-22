@@ -12,10 +12,48 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    
+    
+    func isAppAlreadyLaunchedOnce() -> Bool {
+        let defaults = UserDefaults.standard
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
+            return true
+        } else {
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            return false
+        }
+    }
+    
+    func populateWithUMDCSFaculty() {
+        if !isAppAlreadyLaunchedOnce() {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let asset = NSDataAsset(name: "Faculty", bundle: Bundle.main)
+            do {
+                if let json = try JSONSerialization.jsonObject(with: asset!.data, options: []) as? [String: Any] {
+                    if let faculty = json["faculty"] as? NSArray {
+                        for staff in faculty {
+                            if let staff = staff as? NSDictionary {
+                                let mailbox = Contact.init(context: context)
+                                mailbox.lastName = staff.object(forKey: "lastName") as? String
+                                mailbox.firstName = staff.object(forKey: "firstName") as? String
+                                mailbox.buildingCode = staff.object(forKey: "buildingCode") as? String
+                                mailbox.roomNumber = staff.object(forKey: "roomNumber") as? String
+                                mailbox.phoneNumber = staff.object(forKey: "phoneNumber") as? String
+                                mailbox.email = staff.object(forKey: "email") as? String
+                            }
+                        }
+                        try context.save()
+                    }
+                }
+            } catch let error as NSError {
+                print("Failed to load: \(error.localizedDescription)")
+            }
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        populateWithUMDCSFaculty()
         return true
     }
 
