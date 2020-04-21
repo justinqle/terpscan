@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+extension String {
+    var isValidEmail: Bool {
+        NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").evaluate(with: self)
+    }
+}
+
 struct AddMailboxView: View {
     @Environment(\.managedObjectContext) var viewContext
     
@@ -16,13 +22,17 @@ struct AddMailboxView: View {
     @State var firstName: String = ""
     @State var lastName: String = ""
     
-    @State var email: String = ""
-    @State var phoneNumber: String = ""
-    
-    @State var selectedBuilding = 0
+    @State var selectedBuilding = 1
     @State var roomNumber: String = ""
     
-    var buildings = ["IRB", "AVW", "None"]
+    @State var phoneNumber: String = ""
+    @State var email: String = ""
+    
+    var buildings = ["None", "IRB", "AVW"]
+    
+    var disableForm: Bool {
+        firstName.isEmpty || lastName.isEmpty || !email.isValidEmail || (selectedBuilding != 0 && roomNumber.isEmpty)
+    }
     
     var body: some View {
         NavigationView {
@@ -32,17 +42,16 @@ struct AddMailboxView: View {
                     TextField("Last name", text: $lastName)
                 }.disableAutocorrection(true)
                 Section {
-                    TextField("Email", text: $email).disableAutocorrection(true).autocapitalization(.none)
-                    TextField("Phone", text: $phoneNumber).textContentType(.telephoneNumber).keyboardType(.numberPad)
-                }
-                Section {
                     Picker(selection: $selectedBuilding, label: Text("Building")) {
                         ForEach(0 ..< buildings.count, id: \.self) {
                             Text(self.buildings[$0])
                         }
                     }
-                    // FIXME: Room number enforcement
                     TextField("Room number", text: $roomNumber).keyboardType(.numberPad)
+                }
+                Section {
+                    TextField("Phone", text: $phoneNumber).keyboardType(.numberPad)
+                    TextField("Email", text: $email).disableAutocorrection(true).autocapitalization(.none).keyboardType(.emailAddress)
                 }
             }.navigationBarTitle("New Mailbox", displayMode: .inline)
                 .navigationBarItems(
@@ -52,25 +61,21 @@ struct AddMailboxView: View {
                     }) {
                         Text("Cancel")
                     },
-                    // FIXME: Disable until condition met
                     trailing: Button(
                         action: {
                             self.isPresented = false
-                            var buildingCode = Optional(self.buildings[self.selectedBuilding])
-                            if buildingCode == "None" {
-                                buildingCode = nil
-                            }
+                            let buildingCode = Optional(self.buildings[self.selectedBuilding])
                             withAnimation { Mailbox.create(in: self.viewContext,
                                                            firstName: self.firstName,
                                                            lastName: self.lastName,
                                                            email: self.email,
-                                                           phoneNumber: self.phoneNumber,
-                                                           buildingCode: buildingCode,
-                                                           roomNumber: self.roomNumber,
+                                                           phoneNumber: self.phoneNumber.isEmpty ? nil : self.phoneNumber,
+                                                           buildingCode: buildingCode == "None" ? nil : buildingCode,
+                                                           roomNumber: buildingCode == "None" ? nil: self.roomNumber,
                                                            packages: nil) }
                     }) {
                         Text("Done")
-                    }
+                    }.disabled(disableForm)
             )
         }.navigationViewStyle(StackNavigationViewStyle())
     }
