@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MessageUI
 
 extension String {
     // Pretty-print phone number
@@ -24,6 +25,9 @@ struct MailboxDetailView: View {
     var mode
     
     @State var showingAddPackage = false
+    
+    @State var result: Result<MFMailComposeResult, Error>? = nil
+    @State var isShowingMailView = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -50,12 +54,16 @@ struct MailboxDetailView: View {
                     Spacer()
                     Button(
                         action: {
-                            // action
+                            self.isShowingMailView.toggle()
                     }) {
                         HStack {
-                            Text("Renotify")
+                            Text("Notify")
                             Image(systemName: "envelope")
                         }
+                    }
+                    .disabled(!MFMailComposeViewController.canSendMail())
+                    .sheet(isPresented: $isShowingMailView) {
+                        MailView(mailbox: self.mailbox, result: self.$result)
                     }
                 }
                 Button(action: {
