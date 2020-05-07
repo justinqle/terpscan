@@ -10,11 +10,13 @@ import SwiftUI
 import CoreData
 
 extension Package {
-    static func create(in managedObjectContext: NSManagedObjectContext, for recipient: Mailbox, trackingNumber: String){
+    static func create(in managedObjectContext: NSManagedObjectContext, for recipient: Mailbox, trackingNumber: String, carrier: String, size: String){
         let newPackage = self.init(context: managedObjectContext)
         newPackage.timestamp = Date()
         newPackage.trackingNumber = trackingNumber
         newPackage.recipient = recipient
+        newPackage.carrier = carrier
+        newPackage.size = size
         
         do {
             try  managedObjectContext.save()

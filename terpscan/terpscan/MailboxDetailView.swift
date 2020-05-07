@@ -83,20 +83,12 @@ struct MailboxDetailView: View {
                         }
                     }
                 }
-                PackagesView(recipient: mailbox)
+                EditCheckoutView(recipient: mailbox)
             }
-            Spacer()
-            HStack {
-                if self.mode?.wrappedValue == .active {
-                    Button(
-                        action: {
-                            // action
-                    }) {
-                        Text("Check Out").fontWeight(.bold)
-                    }
-                }
-                Spacer()
-                Button(
+        }.padding(15)
+            .navigationBarTitle("\(mailbox.firstName!) \(mailbox.lastName!)")
+            .navigationBarItems(
+                trailing: Button(
                     action: {
                         self.showingAddPackage.toggle()
                 }) {
@@ -109,11 +101,6 @@ struct MailboxDetailView: View {
                     // FIXME: Workaround to package adding in modal with managedObjectContext
                     AddPackageView(isPresented: self.$showingAddPackage, recipient: self.mailbox).environment(\.managedObjectContext, self.viewContext)
                 }
-            }
-        }.padding(15)
-            .navigationBarTitle("\(mailbox.firstName!) \(mailbox.lastName!)")
-            .navigationBarItems(
-                trailing: EditButton()
         )
     }
 }
@@ -128,6 +115,8 @@ struct MailboxDetailView_Previews: PreviewProvider {
         mailbox.phoneNumber = "2404472771"
         mailbox.buildingCode = "IRB"
         mailbox.roomNumber = "5109"
-        return MailboxDetailView(mailbox: mailbox).environment(\.managedObjectContext, context)
+        return NavigationView {
+            MailboxDetailView(mailbox: mailbox).environment(\.managedObjectContext, context)
+        }
     }
 }

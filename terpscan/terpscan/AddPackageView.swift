@@ -35,10 +35,14 @@ struct AddPackageView: View {
     @State var trackingNumber: String = ""
     @State var isShowingScanner = false
     @State var selectedCarrier = 0
-    @State var selectedSize = 0
+    @State var selectedSize = 1
     
     var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
     var sizes = ["Small", "Medium", "Large"]
+    
+    var disableForm: Bool {
+        selectedRecipient == nil || trackingNumber.isEmpty
+    }
     
     init(isPresented: Binding<Bool>, recipient: Mailbox?) {
         _isPresented = isPresented
@@ -61,6 +65,7 @@ struct AddPackageView: View {
                 Section {
                     HStack {
                         TextField("Tracking number", text: $trackingNumber)
+                        Spacer()
                         Button(
                             action: {
                                 self.isShowingScanner = true
@@ -96,10 +101,12 @@ struct AddPackageView: View {
                             self.isPresented = false
                             withAnimation { Package.create(in: self.viewContext,
                                                            for: self.selectedRecipient!,
-                                                           trackingNumber: self.trackingNumber) }
+                                                           trackingNumber: self.trackingNumber,
+                                                           carrier: self.carriers[self.selectedCarrier],
+                                                           size: self.sizes[self.selectedSize]) }
                     }) {
                         Text("Done")
-                    }
+                    }.disabled(disableForm)
             )
         }.navigationViewStyle(StackNavigationViewStyle())
             .accentColor(primaryColor)

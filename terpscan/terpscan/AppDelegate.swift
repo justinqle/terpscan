@@ -25,37 +25,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func populateWithUMDCSFaculty() {
-        if !isAppAlreadyLaunchedOnce() {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let asset = NSDataAsset(name: "Faculty", bundle: Bundle.main)
-            do {
-                if let json = try JSONSerialization.jsonObject(with: asset!.data, options: []) as? [String: Any] {
-                    if let faculty = json["faculty"] as? NSArray {
-                        for staff in faculty {
-                            if let staff = staff as? NSDictionary {
-                                let mailbox = Mailbox.init(context: context)
-                                mailbox.lastName = staff.object(forKey: "lastName") as? String
-                                mailbox.firstName = staff.object(forKey: "firstName") as? String
-                                if let room = (staff.object(forKey: "room") as? String)?.split(separator: " ").map({String($0)}) {
-                                    mailbox.buildingCode = room[0]
-                                    mailbox.roomNumber = room[1]
-                                }
-                                mailbox.phoneNumber = (staff.object(forKey: "phone") as? String)?.replacingOccurrences(of: "\\((\\d{3})\\) (\\d{3})-(\\d+)", with: "$1$2$3", options: .regularExpression, range: nil)
-                                mailbox.email = staff.object(forKey: "email") as? String
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let asset = NSDataAsset(name: "Faculty", bundle: Bundle.main)
+        do {
+            if let json = try JSONSerialization.jsonObject(with: asset!.data, options: []) as? [String: Any] {
+                if let faculty = json["faculty"] as? NSArray {
+                    for staff in faculty {
+                        if let staff = staff as? NSDictionary {
+                            let mailbox = Mailbox.init(context: context)
+                            mailbox.lastName = staff.object(forKey: "lastName") as? String
+                            mailbox.firstName = staff.object(forKey: "firstName") as? String
+                            if let room = (staff.object(forKey: "room") as? String)?.split(separator: " ").map({String($0)}) {
+                                mailbox.buildingCode = room[0]
+                                mailbox.roomNumber = room[1]
                             }
+                            mailbox.phoneNumber = (staff.object(forKey: "phone") as? String)?.replacingOccurrences(of: "\\((\\d{3})\\) (\\d{3})-(\\d+)", with: "$1$2$3", options: .regularExpression, range: nil)
+                            mailbox.email = staff.object(forKey: "email") as? String
                         }
-                        try context.save()
                     }
+                    try context.save()
                 }
-            } catch let error as NSError {
-                print("Failed to load: \(error.localizedDescription)")
             }
+        } catch let error as NSError {
+            print("Failed to load: \(error.localizedDescription)")
         }
     }
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        populateWithUMDCSFaculty()
+        if !isAppAlreadyLaunchedOnce() {
+            populateWithUMDCSFaculty()
+        }
         return true
     }
 

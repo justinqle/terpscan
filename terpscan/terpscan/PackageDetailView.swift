@@ -16,7 +16,7 @@ struct PackageDetailView: View {
             VStack(alignment: .leading, spacing: 10) {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("recipient").font(.subheadline).fontWeight(.light)
-                    Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)")
+                    Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)").fontWeight(.bold)
                 }
                 Divider()
                 VStack(alignment: .leading, spacing: 5) {
@@ -24,7 +24,16 @@ struct PackageDetailView: View {
                     Text("\(package.trackingNumber!)")
                 }
                 Divider()
-                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("carrier").font(.subheadline).fontWeight(.light)
+                    Text("\(package.carrier!)")
+                }
+                Divider()
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("size").font(.subheadline).fontWeight(.light)
+                    Text("\(package.size!)")
+                }
+                Divider()
             }
             Text("Added \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
             Spacer()
@@ -49,6 +58,8 @@ struct PackageDetailView_Previews: PreviewProvider {
         mailbox.roomNumber = "5109"
         package.recipient = mailbox
         package.trackingNumber = "1Z"
+        package.carrier = "UPS"
+        package.size = "Medium"
         package.timestamp = Date()
         return PackageDetailView(package: package).environment(\.managedObjectContext, context)
     }

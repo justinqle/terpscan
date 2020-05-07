@@ -8,13 +8,92 @@
 
 import SwiftUI
 
-struct PackagesView: View {
-    var packagesRequest : FetchRequest<Package>
-    var packages: FetchedResults<Package>{packagesRequest.wrappedValue}
-    
+struct AllInboxesView: View {
     @Environment(\.managedObjectContext)
     var viewContext
     @Environment(\.editMode) var mode
+    
+    @State var showingAddPackage = false
+    
+    var body: some View {
+        EditCheckoutView(recipient: nil)
+            .navigationBarTitle(Text("All Inboxes"), displayMode: .large)
+            .navigationBarItems(
+                trailing: Button(
+                    action: {
+                        self.showingAddPackage.toggle()
+                }) {
+                    HStack {
+                        Text("New Package")
+                        Image(systemName: "plus")
+                    }
+                }.sheet(isPresented: $showingAddPackage) {
+                    // FIXME: Workaround to package adding in modal with managedObjectContext
+                    AddPackageView(isPresented: self.$showingAddPackage, recipient: nil).environment(\.managedObjectContext, self.viewContext)
+                }
+        )
+    }
+}
+
+struct ArchiveView: View {
+    var body: some View {
+        PackagesView(recipient: nil)
+            .navigationBarTitle(Text("Archive"), displayMode: .large)
+    }
+}
+
+struct EditCheckoutView: View {
+    @Environment(\.editMode) var mode
+    
+    @State var showingAddPackage = false
+    
+    private var recipient: Mailbox?
+    
+    init(recipient: Mailbox?) {
+        self.recipient = recipient
+    }
+    
+    var body: some View {
+        VStack {
+            PackagesView(recipient: recipient)
+            Spacer()
+            HStack {
+                if self.mode?.wrappedValue == .active {
+                    Button(
+                        action: {
+                            // action
+                    }) {
+                        Text("Check Out").fontWeight(.bold)
+                    }
+                }
+                Spacer()
+                EditButton()
+            }.padding(15)
+        }
+    }
+}
+
+struct PackageCellView: View {
+    @ObservedObject var package: Package
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)").font(.headline)
+            HStack {
+                Text("TRK#:").font(.caption)
+                Text("\(package.trackingNumber!)")
+            }
+            HStack {
+                Text("Received:").font(.caption)
+                Text("\(package.timestamp!, formatter: dateFormatter)")
+            }
+        }
+    }
+}
+
+struct PackagesView: View {
+    var packagesRequest : FetchRequest<Package>
+    var packages: FetchedResults<Package>{packagesRequest.wrappedValue}
     
     @State public var selectedPackages = Set<Package>()
     
@@ -30,26 +109,12 @@ struct PackagesView: View {
     }
     
     var body: some View {
-        VStack {
-            List(selection: $selectedPackages) {
-                ForEach(packages, id: \.self) { package in
-                    NavigationLink(
-                        destination: PackageDetailView(package: package)
-                    ) {
-                        VStack(alignment: .leading) {
-                            Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)").font(.headline)
-                            HStack {
-                                Text("TRK#:").font(.caption)
-                                Text("\(package.trackingNumber!)")
-                            }
-                            HStack {
-                                Text("Received:").font(.caption)
-                                Text("\(package.timestamp!, formatter: dateFormatter)")
-                            }
-                        }
-                    }
-                }.onDelete { indices in
-                    self.packages.deletePackage(at: indices, from: self.viewContext)
+        List(selection: $selectedPackages) {
+            ForEach(packages, id: \.self) { package in
+                NavigationLink(
+                    destination: PackageDetailView(package: package)
+                ) {
+                    PackageCellView(package: package)
                 }
             }
         }
@@ -66,6 +131,10 @@ struct PackagesView_Previews: PreviewProvider {
         mailbox.phoneNumber = "2404472771"
         mailbox.buildingCode = "IRB"
         mailbox.roomNumber = "5109"
-        return PackagesView(recipient: mailbox).environment(\.managedObjectContext, context)
+        return NavigationView {
+            AllInboxesView().environment(\.managedObjectContext, context)
+            //ArchiveView().environment(\.managedObjectContext, context)
+            //EditCheckoutView(recipient: mailbox).environment(\.managedObjectContext, context)
+        }
     }
 }
