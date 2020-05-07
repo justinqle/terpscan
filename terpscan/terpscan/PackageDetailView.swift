@@ -21,7 +21,11 @@ struct PackageDetailView: View {
                 Divider()
                 VStack(alignment: .leading, spacing: 5) {
                     Text("tracking number").font(.subheadline).fontWeight(.light)
-                    Text("\(package.trackingNumber!)")
+                    Text("\(package.trackingNumber!)").foregroundColor(primaryColor).onTapGesture {
+                        let url = URL.init(string: "https://www.google.com/search?q=\(self.package.trackingNumber!)")
+                        guard let searchURL = url, UIApplication.shared.canOpenURL(searchURL) else { return }
+                        UIApplication.shared.open(searchURL)
+                    }
                 }
                 Divider()
                 VStack(alignment: .leading, spacing: 5) {
