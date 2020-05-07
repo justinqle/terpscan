@@ -37,7 +37,7 @@ struct AllInboxesView: View {
 
 struct ArchiveView: View {
     var body: some View {
-        PackagesView(recipient: nil)
+        PackagesView(recipient: nil, archivedOnly: true)
             .navigationBarTitle(Text("Archive"), displayMode: .large)
     }
 }
@@ -55,7 +55,7 @@ struct EditCheckoutView: View {
     
     var body: some View {
         VStack {
-            PackagesView(recipient: recipient)
+            PackagesView(recipient: recipient, archivedOnly: false)
             Spacer()
             HStack {
                 if self.mode?.wrappedValue == .active {
@@ -97,14 +97,19 @@ struct PackagesView: View {
     
     @State public var selectedPackages = Set<Package>()
     
-    init(recipient: Mailbox?) {
-        var predicate: NSPredicate? = nil
+    init(recipient: Mailbox?, archivedOnly: Bool) {
+        let andPredicate: NSCompoundPredicate
+        var subpredicates: [NSPredicate] = []
         if let recipient = recipient {
-            predicate = NSPredicate(format: "%K == %@", #keyPath(Package.recipient), recipient)
+            subpredicates.append(NSPredicate(format: "%K == %@", #keyPath(Package.recipient), recipient))
         }
+        if archivedOnly {
+            subpredicates.append(NSPredicate(format: "%K != nil", #keyPath(Package.receipt)))
+        }
+        andPredicate = NSCompoundPredicate(type: .and, subpredicates: subpredicates)
         self.packagesRequest = FetchRequest<Package>(entity: Package.entity(),
                                                      sortDescriptors: [NSSortDescriptor(keyPath: \Package.timestamp, ascending: false)],
-                                                     predicate: predicate,
+                                                     predicate: andPredicate,
                                                      animation: .default)
     }
     

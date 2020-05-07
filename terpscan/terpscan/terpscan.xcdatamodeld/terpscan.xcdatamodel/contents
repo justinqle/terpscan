@@ -15,11 +15,18 @@
         <attribute name="size" optional="YES" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date"/>
         <attribute name="trackingNumber" attributeType="String"/>
+        <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Receipt"/>
         <relationship name="recipient" maxCount="1" deletionRule="Nullify" destinationEntity="Mailbox" inverseName="packages" inverseEntity="Mailbox"/>
         <userInfo/>
     </entity>
+    <entity name="Receipt" representedClassName="Receipt" codeGenerationType="class">
+        <attribute name="signer" attributeType="String"/>
+        <attribute name="timestamp" attributeType="Date"/>
+        <userInfo/>
+    </entity>
     <elements>
-        <element name="Mailbox" positionX="564.53125" positionY="185.671875" width="128" height="148"/>
-        <element name="Package" positionX="256.3515625" positionY="193.44921875" width="128" height="118"/>
+        <element name="Mailbox" positionX="-2.4453125" positionY="214.1015625" width="128" height="148"/>
+        <element name="Package" positionX="233.578125" positionY="217.2734375" width="128" height="133"/>
+        <element name="Receipt" positionX="414" positionY="243" width="128" height="73"/>
     </elements>
 </model>
