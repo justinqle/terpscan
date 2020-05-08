@@ -25,6 +25,7 @@
 		32C8DA902421D3F600D49967 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 32C8DA8F2421D3F600D49967 /* CodeScanner */; };
 		32C8DA962421F47F00D49967 /* AddPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA952421F47F00D49967 /* AddPackageView.swift */; };
 		32C8DA982421F9C600D49967 /* AddMailboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA972421F9C600D49967 /* AddMailboxView.swift */; };
+		32F3223A2465CA5600BC2E8F /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F322392465CA5600BC2E8F /* CheckOutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		32C8DA77242171E600D49967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C8DA952421F47F00D49967 /* AddPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPackageView.swift; sourceTree = "<group>"; };
 		32C8DA972421F9C600D49967 /* AddMailboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMailboxView.swift; sourceTree = "<group>"; };
+		32F322392465CA5600BC2E8F /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				3219860524240A7200F5D410 /* MailboxDetailView.swift */,
 				32284E942464AAD6004E81E5 /* MailView.swift */,
 				3214F00A2426B4F4004C2410 /* PackagesView.swift */,
+				32F322392465CA5600BC2E8F /* CheckOutView.swift */,
 				3214F00C2426C3AA004C2410 /* PackageDetailView.swift */,
 				32C8DA972421F9C600D49967 /* AddMailboxView.swift */,
 				32C8DA952421F47F00D49967 /* AddPackageView.swift */,
@@ -314,6 +317,7 @@
 				32C8DA982421F9C600D49967 /* AddMailboxView.swift in Sources */,
 				32C8DA54242171E300D49967 /* SceneDelegate.swift in Sources */,
 				3219860224234B9C00F5D410 /* MailboxesView.swift in Sources */,
+				32F3223A2465CA5600BC2E8F /* CheckOutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

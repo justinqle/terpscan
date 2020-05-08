@@ -9,11 +9,9 @@
 import SwiftUI
 
 struct AllInboxesView: View {
-    @Environment(\.managedObjectContext)
-    var viewContext
-    @Environment(\.editMode) var mode
+    @Environment(\.managedObjectContext) var viewContext
     
-    @State var showingAddPackage = false
+    @State private var showingAddPackage = false
     
     var body: some View {
         EditCheckoutView(recipient: nil)
@@ -21,7 +19,7 @@ struct AllInboxesView: View {
             .navigationBarItems(
                 trailing: Button(
                     action: {
-                        self.showingAddPackage.toggle()
+                        self.showingAddPackage = true
                 }) {
                     HStack {
                         Text("New Package")
@@ -37,7 +35,7 @@ struct AllInboxesView: View {
 
 struct ArchiveView: View {
     var body: some View {
-        PackagesView(recipient: nil, archivedOnly: true)
+        PackagesView(recipient: nil, archivedOnly: true, selectedPackages: nil)
             .navigationBarTitle(Text("Archive"), displayMode: .large)
     }
 }
@@ -45,7 +43,8 @@ struct ArchiveView: View {
 struct EditCheckoutView: View {
     @Environment(\.editMode) var mode
     
-    @State var showingAddPackage = false
+    @State private var showingCheckOutPackage = false
+    @State private var selectedPackages = Set<Package>()
     
     private var recipient: Mailbox?
     
@@ -55,15 +54,20 @@ struct EditCheckoutView: View {
     
     var body: some View {
         VStack {
-            PackagesView(recipient: recipient, archivedOnly: false)
+            PackagesView(recipient: recipient, archivedOnly: false, selectedPackages: $selectedPackages)
             Spacer()
             HStack {
                 if self.mode?.wrappedValue == .active {
                     Button(
                         action: {
-                            // action
+                            self.showingCheckOutPackage = true
                     }) {
                         Text("Check Out").fontWeight(.bold)
+                    }
+                    .disabled(selectedPackages.isEmpty)
+                    .sheet(isPresented: $showingCheckOutPackage) {
+                        CheckOutView(isPresented: self.$showingCheckOutPackage)
+                            .accentColor(primaryColor)
                     }
                 }
                 Spacer()
@@ -92,12 +96,12 @@ struct PackageCellView: View {
 }
 
 struct PackagesView: View {
-    var packagesRequest : FetchRequest<Package>
-    var packages: FetchedResults<Package>{packagesRequest.wrappedValue}
+    private var packagesRequest : FetchRequest<Package>
+    private var packages: FetchedResults<Package>{packagesRequest.wrappedValue}
     
-    @State public var selectedPackages = Set<Package>()
+    private var selectedPackages: Binding<Set<Package>>?
     
-    init(recipient: Mailbox?, archivedOnly: Bool) {
+    init(recipient: Mailbox?, archivedOnly: Bool, selectedPackages: Binding<Set<Package>>?) {
         let andPredicate: NSCompoundPredicate
         var subpredicates: [NSPredicate] = []
         if let recipient = recipient {
@@ -111,10 +115,11 @@ struct PackagesView: View {
                                                      sortDescriptors: [NSSortDescriptor(keyPath: \Package.timestamp, ascending: false)],
                                                      predicate: andPredicate,
                                                      animation: .default)
+        self.selectedPackages = selectedPackages
     }
     
     var body: some View {
-        List(selection: $selectedPackages) {
+        List(selection: selectedPackages) {
             ForEach(packages, id: \.self) { package in
                 NavigationLink(
                     destination: PackageDetailView(package: package)
