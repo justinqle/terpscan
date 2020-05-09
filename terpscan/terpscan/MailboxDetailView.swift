@@ -61,7 +61,7 @@ struct MailboxDetailView: View {
                             Image(systemName: "envelope")
                         }
                     }
-                    .disabled(!MFMailComposeViewController.canSendMail())
+                    .disabled(!MFMailComposeViewController.canSendMail() || mailbox.packages?.count == 0)
                     .sheet(isPresented: $isShowingMailView) {
                         MailView(mailbox: self.mailbox, result: self.$result)
                     }
