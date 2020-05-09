@@ -33,11 +33,6 @@ struct PackageDetailView: View {
                     Text("\(package.carrier!)")
                 }
                 Divider()
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("size").font(.subheadline).fontWeight(.light)
-                    Text("\(package.size!)")
-                }
-                Divider()
             }
             Text("Added \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
             Spacer()
@@ -63,7 +58,6 @@ struct PackageDetailView_Previews: PreviewProvider {
         package.recipient = mailbox
         package.trackingNumber = "1Z"
         package.carrier = "UPS"
-        package.size = "Medium"
         package.timestamp = Date()
         return PackageDetailView(package: package).environment(\.managedObjectContext, context)
     }

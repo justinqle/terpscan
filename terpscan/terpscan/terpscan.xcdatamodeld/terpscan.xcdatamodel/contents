@@ -12,7 +12,6 @@
     </entity>
     <entity name="Package" representedClassName="Package" codeGenerationType="class">
         <attribute name="carrier" optional="YES" attributeType="String"/>
-        <attribute name="size" optional="YES" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date"/>
         <attribute name="trackingNumber" attributeType="String"/>
         <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Receipt"/>
@@ -26,7 +25,7 @@
     </entity>
     <elements>
         <element name="Mailbox" positionX="-2.4453125" positionY="214.1015625" width="128" height="148"/>
-        <element name="Package" positionX="233.578125" positionY="217.2734375" width="128" height="133"/>
+        <element name="Package" positionX="233.578125" positionY="217.2734375" width="128" height="118"/>
         <element name="Receipt" positionX="414" positionY="243" width="128" height="73"/>
     </elements>
 </model>

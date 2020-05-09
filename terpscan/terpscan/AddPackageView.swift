@@ -35,10 +35,8 @@ struct AddPackageView: View {
     @State var trackingNumber: String = ""
     @State var isShowingScanner = false
     @State var selectedCarrier = 0
-    @State var selectedSize = 1
     
     var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
-    var sizes = ["Small", "Medium", "Large"]
     
     var disableForm: Bool {
         selectedRecipient == nil || trackingNumber.isEmpty
@@ -81,13 +79,6 @@ struct AddPackageView: View {
                         }
                     }
                 }
-                Section {
-                    Picker(selection: $selectedSize, label: Text("Size")) {
-                        ForEach(0 ..< sizes.count, id: \.self) {
-                            Text(self.sizes[$0])
-                        }
-                    }.pickerStyle(SegmentedPickerStyle())
-                }
             }.navigationBarTitle("New Package", displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(
@@ -102,8 +93,7 @@ struct AddPackageView: View {
                             withAnimation { Package.create(in: self.viewContext,
                                                            for: self.selectedRecipient!,
                                                            trackingNumber: self.trackingNumber,
-                                                           carrier: self.carriers[self.selectedCarrier],
-                                                           size: self.sizes[self.selectedSize]) }
+                                                           carrier: self.carriers[self.selectedCarrier]) }
                     }) {
                         Text("Done")
                     }.disabled(disableForm)
