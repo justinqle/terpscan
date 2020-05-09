@@ -47,7 +47,7 @@ struct AddMailboxView: View {
                             Text(self.buildings[$0])
                         }
                     }
-                    TextField("Room number", text: $roomNumber).keyboardType(.numberPad)
+                    TextField("Room number", text: $roomNumber).keyboardType(.numberPad).disabled(selectedBuilding == 0)
                 }
                 Section {
                     TextField("Phone", text: $phoneNumber).keyboardType(.numberPad)
