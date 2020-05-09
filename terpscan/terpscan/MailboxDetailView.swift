@@ -81,13 +81,12 @@ struct MailboxDetailView: View {
                     Text("packages").font(.subheadline).fontWeight(.light)
                     Text("(\(mailbox.packages?.count ?? 0))").font(.subheadline).fontWeight(.heavy)
                     Spacer()
-                    Button(
-                        action: {
-                            // action
-                    }) {
+                    NavigationLink(
+                        destination: ArchiveView().environment(\.managedObjectContext, viewContext)
+                    ) {
                         HStack {
-                            Text("View History")
-                            Image(systemName: "clock")
+                            Text("View Archive")
+                            Image(systemName: "archivebox")
                         }
                     }
                 }
