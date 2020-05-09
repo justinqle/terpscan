@@ -77,20 +77,40 @@ struct EditCheckoutView: View {
     }
 }
 
+extension Date {
+    func formatRelativeString() -> String {
+        let dateFormatter = DateFormatter()
+        let calendar = Calendar(identifier: .gregorian)
+        dateFormatter.doesRelativeDateFormatting = true
+        
+        if calendar.isDateInToday(self) {
+            dateFormatter.timeStyle = .short
+            dateFormatter.dateStyle = .none
+        } else if calendar.isDateInYesterday(self){
+            dateFormatter.timeStyle = .none
+            dateFormatter.dateStyle = .medium
+        } else if calendar.compare(Date(), to: self, toGranularity: .weekOfYear) == .orderedSame {
+            let weekday = calendar.dateComponents([.weekday], from: self).weekday ?? 0
+            return dateFormatter.weekdaySymbols[weekday-1]
+        } else {
+            dateFormatter.timeStyle = .none
+            dateFormatter.dateStyle = .short
+        }
+        return dateFormatter.string(from: self)
+    }
+}
+
 struct PackageCellView: View {
     @ObservedObject var package: Package
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)").font(.headline)
+        VStack(alignment: .leading, spacing: 5) {
             HStack {
-                Text("TRK#:").font(.caption)
-                Text("\(package.trackingNumber!)")
+                Text("\(package.recipient!.firstName!) \(package.recipient!.lastName!)").font(.headline)
+                Spacer()
+                Text("\(package.timestamp!.formatRelativeString())").font(.subheadline)
             }
-            HStack {
-                Text("Received:").font(.caption)
-                Text("\(package.timestamp!, formatter: dateFormatter)")
-            }
+            Text("# \(package.trackingNumber!)")
         }
     }
 }

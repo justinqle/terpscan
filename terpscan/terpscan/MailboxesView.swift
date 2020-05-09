@@ -10,13 +10,6 @@ import SwiftUI
 
 public let primaryColor = Color(#colorLiteral(red: 0.8884014487, green: 0.1081022099, blue: 0.1330436766, alpha: 1))
 
-public let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .short
-    dateFormatter.timeStyle = .short
-    return dateFormatter
-}()
-
 struct MailboxesView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Mailbox.lastName, ascending: true)],

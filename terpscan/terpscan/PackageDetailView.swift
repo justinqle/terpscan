@@ -11,6 +11,13 @@ import SwiftUI
 struct PackageDetailView: View {
     @ObservedObject var package: Package
     
+    public let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter
+    }()
+    
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             VStack(alignment: .leading, spacing: 10) {
@@ -34,7 +41,7 @@ struct PackageDetailView: View {
                 }
                 Divider()
             }
-            Text("Added \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
+            Text("Received \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
             Spacer()
         }.padding(15)
             .navigationBarTitle("# \(package.trackingNumber!)")
