@@ -56,6 +56,24 @@ struct EditCheckoutView: View {
     private var recipient: Mailbox?
     private var packageType: PackageType
     
+    // FIXME: Remove eventually
+    private var getUnarchived: [Package] {
+        if let packages = recipient?.packages?.allObjects as? [Package] {
+            return packages.filter({p in p.receipt == nil})
+        } else {
+            return []
+        }
+    }
+    
+    // FIXME: Remove eventually
+    private var numOfUnarchived: Int {
+        if let packages = recipient?.packages?.allObjects as? [Package] {
+            return packages.filter({p in p.receipt == nil}).count
+        } else {
+            return 0
+        }
+    }
+    
     init(recipient: Mailbox?, packageType: PackageType) {
         self.recipient = recipient
         self.packageType = packageType
@@ -65,23 +83,46 @@ struct EditCheckoutView: View {
         VStack {
             PackagesView(recipient: recipient, packageType: packageType, selectedPackages: $selectedPackages)
             Spacer()
-            HStack {
-                if self.mode?.wrappedValue == .active {
-                    Button(
-                        action: {
-                            self.showingCheckOutPackage = true
-                    }) {
-                        Text("Check Out").fontWeight(.bold)
+            ZStack {
+                HStack {
+                    if self.mode?.wrappedValue == .active {
+                        Button(
+                            action: {
+                                self.showingCheckOutPackage = true
+                        }) {
+                            Text("Check Out").fontWeight(.bold)
+                        }
+                        .disabled(selectedPackages.isEmpty)
+                        .sheet(isPresented: $showingCheckOutPackage) {
+                            CheckOutView(isPresented: self.$showingCheckOutPackage, packages: self.$selectedPackages)
+                                .accentColor(primaryColor)
+                                .environment(\.managedObjectContext, self.viewContext)
+                        }
                     }
-                    .disabled(selectedPackages.isEmpty)
-                    .sheet(isPresented: $showingCheckOutPackage) {
-                        CheckOutView(isPresented: self.$showingCheckOutPackage, packages: self.$selectedPackages)
-                            .accentColor(primaryColor)
-                            .environment(\.managedObjectContext, self.viewContext)
-                    }
+                    Spacer()
+                    EditButton()
                 }
-                Spacer()
-                EditButton()
+                HStack {
+                    Spacer()
+                    if self.mode?.wrappedValue == .active {
+                        if numOfUnarchived != selectedPackages.count || numOfUnarchived == 0 {
+                            Button(
+                                action: {
+                                    self.selectedPackages = self.selectedPackages.union(self.getUnarchived)
+                            }) {
+                                Text("Select All")
+                            }
+                        } else {
+                            Button(
+                                action: {
+                                    self.selectedPackages = Set<Package>()
+                            }) {
+                                Text("Deselect All")
+                            }
+                        }
+                    }
+                    Spacer()
+                }
             }.padding(15)
         }
     }
