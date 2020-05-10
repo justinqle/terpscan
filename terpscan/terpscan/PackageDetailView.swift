@@ -11,6 +11,14 @@ import SwiftUI
 struct PackageDetailView: View {
     @ObservedObject var package: Package
     
+    private var showSignature: Bool {
+        if let _ = package.receipt {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     public let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -43,14 +51,14 @@ struct PackageDetailView: View {
             }
             Text("Received \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
             Divider()
-            Image(uiImage: UIImage(data: (package.receipt?.signature!)!, scale: 1.0)!).border(Color(UIColor.secondarySystemBackground), width: 5).padding(.all)
+            if showSignature {
+                Image(uiImage: UIImage(data: (package.receipt?.signature!)!, scale: 1.0)!).border(Color(UIColor.secondarySystemBackground), width: 5).padding(.all)
+            }
             Text("Checked out \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
             Spacer()
-        }.padding(15)
-            .navigationBarTitle("# \(package.trackingNumber!)")
-            .navigationBarItems(
-                trailing: EditButton()
-        )
+        }
+        .padding(15)
+        .navigationBarTitle("# \(package.trackingNumber!)")
     }
 }
 
@@ -69,6 +77,8 @@ struct PackageDetailView_Previews: PreviewProvider {
         package.trackingNumber = "1Z"
         package.carrier = "UPS"
         package.timestamp = Date()
-        return PackageDetailView(package: package).environment(\.managedObjectContext, context)
+        return NavigationView {
+            PackageDetailView(package: package).environment(\.managedObjectContext, context)
+        }
     }
 }
