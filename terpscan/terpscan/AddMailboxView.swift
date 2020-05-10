@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-extension String {
-    var isValidEmail: Bool {
-        NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").evaluate(with: self)
-    }
-}
-
 struct AddMailboxView: View {
     @Environment(\.managedObjectContext) var viewContext
     
@@ -30,8 +24,8 @@ struct AddMailboxView: View {
     
     var buildings = ["None", "IRB", "AVW"]
     
-    var disableForm: Bool {
-        firstName.isEmpty || lastName.isEmpty || !email.isValidEmail || (selectedBuilding != 0 && roomNumber.isEmpty)
+    var disableDone: Bool {
+        firstName.isEmpty || lastName.isEmpty || (selectedBuilding != 0 && roomNumber.isEmpty)
     }
     
     var body: some View {
@@ -47,7 +41,9 @@ struct AddMailboxView: View {
                             Text(self.buildings[$0])
                         }
                     }
-                    TextField("Room number", text: $roomNumber).keyboardType(.numberPad).disabled(selectedBuilding == 0)
+                    if selectedBuilding != 0 {
+                        TextField("Room number", text: $roomNumber).keyboardType(.numberPad)
+                    }
                 }
                 Section {
                     TextField("Phone", text: $phoneNumber).keyboardType(.numberPad)
@@ -68,14 +64,14 @@ struct AddMailboxView: View {
                             withAnimation { Mailbox.create(in: self.viewContext,
                                                            firstName: self.firstName,
                                                            lastName: self.lastName,
-                                                           email: self.email,
+                                                           email: self.email.isEmpty ? nil : self.email,
                                                            phoneNumber: self.phoneNumber.isEmpty ? nil : self.phoneNumber,
                                                            buildingCode: buildingCode == "None" ? nil : buildingCode,
                                                            roomNumber: buildingCode == "None" ? nil: self.roomNumber,
                                                            packages: nil) }
                     }) {
                         Text("Done")
-                    }.disabled(disableForm)
+                    }.disabled(disableDone)
             )
         }.navigationViewStyle(StackNavigationViewStyle())
     }

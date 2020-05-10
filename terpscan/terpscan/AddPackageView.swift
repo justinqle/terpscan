@@ -38,7 +38,7 @@ struct AddPackageView: View {
     
     var carriers = ["UPS", "FedEx", "USPS", "Amazon", "DHL", "Other"]
     
-    var disableForm: Bool {
+    var disableDone: Bool {
         selectedRecipient == nil || trackingNumber.isEmpty
     }
     
@@ -70,7 +70,7 @@ struct AddPackageView: View {
                         }) {
                             Image(systemName: "barcode.viewfinder").imageScale(.large)
                         }.sheet(isPresented: $isShowingScanner) {
-                            CodeScannerView(codeTypes: [.code128, .pdf417], simulatedData: "-1", completion: self.handleScan)
+                            CodeScannerView(codeTypes: [.code128, .pdf417], simulatedData: "1Z12345E1512345676", completion: self.handleScan)
                         }
                     }
                     Picker(selection: $selectedCarrier, label: Text("Carrier")) {
@@ -96,7 +96,7 @@ struct AddPackageView: View {
                                                            carrier: self.carriers[self.selectedCarrier]) }
                     }) {
                         Text("Done")
-                    }.disabled(disableForm)
+                    }.disabled(disableDone)
             )
         }.navigationViewStyle(StackNavigationViewStyle())
             .accentColor(primaryColor)

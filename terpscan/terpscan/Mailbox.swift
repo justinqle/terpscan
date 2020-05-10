@@ -13,7 +13,7 @@ extension Mailbox {
     static func create(in managedObjectContext: NSManagedObjectContext,
                        firstName: String,
                        lastName: String,
-                       email: String,
+                       email: String?,
                        phoneNumber: String?,
                        buildingCode: String?,
                        roomNumber: String?,

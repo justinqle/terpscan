@@ -69,7 +69,7 @@ struct MailboxDetailView: View {
                             Image(systemName: "envelope")
                         }
                     }
-                    .disabled(!MFMailComposeViewController.canSendMail() || mailbox.packages?.count == 0)
+                    .disabled(!MFMailComposeViewController.canSendMail() || mailbox.packages?.count == 0 || mailbox.email == nil)
                     .sheet(isPresented: $isShowingMailView) {
                         MailView(mailbox: self.mailbox, result: self.$result)
                     }
@@ -80,7 +80,7 @@ struct MailboxDetailView: View {
                     guard let url = URL(string: formattedString) else { return }
                     UIApplication.shared.open(url)
                 }) {
-                    Text("\(mailbox.email!)")
+                    Text("\(mailbox.email ?? "")")
                 }
             }
             Divider()

@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Mailbox" representedClassName="Mailbox" codeGenerationType="class">
         <attribute name="buildingCode" optional="YES" attributeType="String"/>
-        <attribute name="email" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
         <attribute name="lastName" attributeType="String"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
@@ -11,7 +11,7 @@
         <userInfo/>
     </entity>
     <entity name="Package" representedClassName="Package" codeGenerationType="class">
-        <attribute name="carrier" optional="YES" attributeType="String"/>
+        <attribute name="carrier" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date"/>
         <attribute name="trackingNumber" attributeType="String"/>
         <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Receipt" inverseName="packages" inverseEntity="Receipt"/>
@@ -22,7 +22,7 @@
         <attribute name="signature" attributeType="Binary"/>
         <attribute name="signer" attributeType="String"/>
         <attribute name="timestamp" attributeType="Date"/>
-        <relationship name="packages" toMany="YES" deletionRule="Cascade" destinationEntity="Package" inverseName="receipt" inverseEntity="Package"/>
+        <relationship name="packages" toMany="YES" deletionRule="Deny" destinationEntity="Package" inverseName="receipt" inverseEntity="Package"/>
         <userInfo/>
     </entity>
     <elements>
