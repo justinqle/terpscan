@@ -11,7 +11,7 @@ import SwiftUI
 struct PackageDetailView: View {
     @ObservedObject var package: Package
     
-    private var showSignature: Bool {
+    private var showReceipt: Bool {
         if let _ = package.receipt {
             return true
         } else {
@@ -49,12 +49,14 @@ struct PackageDetailView: View {
                 }
                 Divider()
             }
-            Text("Received \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
-            Divider()
-            if showSignature {
-                Image(uiImage: UIImage(data: (package.receipt?.signature!)!, scale: 1.0)!).border(Color(UIColor.secondarySystemBackground), width: 5).padding(.all)
+            if showReceipt {
+                Image(uiImage: UIImage(data: (package.receipt?.signature!)!, scale: 1.0)!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .border(Color(UIColor.secondarySystemBackground), width: 5)
+                Text("Checked out by \(package.receipt!.signer!) on \(package.receipt!.timestamp!, formatter: dateFormatter)").font(.footnote)
             }
-            Text("Checked out \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
+            Text("Received on \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
             Spacer()
         }
         .padding(15)
@@ -65,20 +67,11 @@ struct PackageDetailView: View {
 struct PackageDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let package = Package.init(context: context)
-        let mailbox = Mailbox.init(context: context)
-        mailbox.firstName = "Justin"
-        mailbox.lastName = "Le"
-        mailbox.email = "justinqle@gmail.com"
-        mailbox.phoneNumber = "2404472771"
-        mailbox.buildingCode = "IRB"
-        mailbox.roomNumber = "5109"
-        package.recipient = mailbox
-        package.trackingNumber = "1Z"
-        package.carrier = "UPS"
-        package.timestamp = Date()
+        let mailbox = initMailbox(in: context)
+        let package = initPackage(in: context, for: mailbox)
+        let _ = initReceipt(in: context, for: [package])
         return NavigationView {
             PackageDetailView(package: package).environment(\.managedObjectContext, context)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

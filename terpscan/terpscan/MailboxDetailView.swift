@@ -115,13 +115,7 @@ struct MailboxDetailView: View {
 struct MailboxDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let mailbox = Mailbox.init(context: context)
-        mailbox.firstName = "Justin"
-        mailbox.lastName = "Le"
-        mailbox.email = "justinqle@gmail.com"
-        mailbox.phoneNumber = "2404472771"
-        mailbox.buildingCode = "IRB"
-        mailbox.roomNumber = "5109"
+        let mailbox = initMailbox(in: context)
         return NavigationView {
             MailboxDetailView(mailbox: mailbox).environment(\.managedObjectContext, context)
         }

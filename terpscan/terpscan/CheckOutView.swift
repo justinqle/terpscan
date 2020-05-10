@@ -47,17 +47,10 @@ struct CheckOutView: View {
 struct CheckOutView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let mailbox = Mailbox.init(context: context)
-        mailbox.firstName = "Justin"
-        mailbox.lastName = "Le"
-        mailbox.email = "justinqle@gmail.com"
+        let mailbox = initMailbox(in: context)
         var packages = Set<Package>()
         for _ in 1...3 {
-            let package = Package.init(context: context)
-            package.recipient = mailbox
-            package.trackingNumber = "1Z"
-            package.carrier = "UPS"
-            package.timestamp = Date()
+            let package = initPackage(in: context, for: mailbox)
             packages.insert(package)
         }
         return CheckOutView(isPresented: .constant(true), packages: .constant(packages)).environment(\.managedObjectContext, context)
