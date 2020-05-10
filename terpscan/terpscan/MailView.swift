@@ -51,11 +51,13 @@ struct MailView: UIViewControllerRepresentable {
         let vc = MFMailComposeViewController()
         // Message customization
         vc.setToRecipients([mailbox.email!])
-        vc.setSubject("\(mailbox.packages!.count) package(s) ready for pickup")
+        
+        let num = numOfUnarchived(from: mailbox)
+        vc.setSubject("\(num) package(s) ready for pickup")
         
         let body = """
         <p>Hi \(mailbox.firstName!) \(mailbox.lastName!),</p>
-        <p>You have \(mailbox.packages!.count) package(s) ready for pickup in the Iribe Center Mailroom (IRB room 5109). Please come and pick it up at your earliest convenience.</p>
+        <p>You have \(num) package(s) ready for pickup in the Iribe Center Mailroom (IRB room 5109). Please come and pick it up at your earliest convenience.</p>
         <p><b>University of Maryland Department of Computer Science</b><br/>
         Paint Branch Dr. | Iribe Center Mailroom (IRB) Room 5109 | College Park MD | 20742<br/>
         Ext: 50425<br/>

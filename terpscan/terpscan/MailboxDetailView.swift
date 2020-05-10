@@ -16,16 +16,22 @@ extension String {
     }
 }
 
+// FIXME: Better way to do this?
+public func getUnarchived(from recipient: Mailbox?) -> [Package] {
+    if let packages = recipient?.packages?.allObjects as? [Package] {
+        return packages.filter({p in p.receipt == nil})
+    } else {
+        return []
+    }
+}
+
+// FIXME: Better way to do this?
+public func numOfUnarchived(from recipient: Mailbox?) -> Int {
+    getUnarchived(from: recipient).count
+}
+
 struct MailboxDetailView: View {
     @ObservedObject var mailbox: Mailbox
-    
-    private var numOfUnarchived: Int {
-        if let packages = mailbox.packages?.allObjects as? [Package] {
-            return packages.filter({p in p.receipt == nil}).count
-        } else {
-            return 0
-        }
-    }
     
     @Environment(\.managedObjectContext)
     var viewContext
@@ -87,7 +93,7 @@ struct MailboxDetailView: View {
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Text("packages").font(.subheadline).fontWeight(.light)
-                    Text("(\(numOfUnarchived))").font(.subheadline).fontWeight(.heavy)
+                    Text("(\(numOfUnarchived(from: mailbox)))").font(.subheadline).fontWeight(.heavy)
                     Spacer()
                     NavigationLink(
                         destination: ArchiveView(recipient: mailbox).environment(\.managedObjectContext, viewContext)

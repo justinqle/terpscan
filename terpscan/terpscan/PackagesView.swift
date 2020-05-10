@@ -56,24 +56,6 @@ struct EditCheckoutView: View {
     private var recipient: Mailbox?
     private var packageType: PackageType
     
-    // FIXME: Remove eventually
-    private var getUnarchived: [Package] {
-        if let packages = recipient?.packages?.allObjects as? [Package] {
-            return packages.filter({p in p.receipt == nil})
-        } else {
-            return []
-        }
-    }
-    
-    // FIXME: Remove eventually
-    private var numOfUnarchived: Int {
-        if let packages = recipient?.packages?.allObjects as? [Package] {
-            return packages.filter({p in p.receipt == nil}).count
-        } else {
-            return 0
-        }
-    }
-    
     init(recipient: Mailbox?, packageType: PackageType) {
         self.recipient = recipient
         self.packageType = packageType
@@ -95,7 +77,7 @@ struct EditCheckoutView: View {
                         .disabled(selectedPackages.isEmpty)
                         .sheet(isPresented: $showingCheckOutPackage) {
                             CheckOutView(isPresented: self.$showingCheckOutPackage, packages: self.$selectedPackages)
-                                .accentColor(primaryColor)
+                                .accentColor(ACCENT_COLOR)
                                 .environment(\.managedObjectContext, self.viewContext)
                         }
                     }
@@ -105,10 +87,10 @@ struct EditCheckoutView: View {
                 HStack {
                     Spacer()
                     if self.mode?.wrappedValue == .active {
-                        if numOfUnarchived != selectedPackages.count || numOfUnarchived == 0 {
+                        if numOfUnarchived(from: recipient) != selectedPackages.count || numOfUnarchived(from: recipient) == 0 {
                             Button(
                                 action: {
-                                    self.selectedPackages = self.selectedPackages.union(self.getUnarchived)
+                                    self.selectedPackages = self.selectedPackages.union(getUnarchived(from: self.recipient))
                             }) {
                                 Text("Select All")
                             }
@@ -214,11 +196,16 @@ struct PackagesView: View {
 struct PackagesView_Previews: PreviewProvider {
     static var previews: some View {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        _ = initMailbox(in: context)
+        let mailbox = initMailbox(in: context)
+        var packages = Set<Package>()
+        for _ in 1...3 {
+            let package = initPackage(in: context, for: mailbox)
+            packages.insert(package)
+        }
         return NavigationView {
             AllInboxesView().environment(\.managedObjectContext, context)
-            //ArchiveView().environment(\.managedObjectContext, context)
-            //EditCheckoutView(recipient: mailbox).environment(\.managedObjectContext, context)
+            //ArchiveView(recipient: nil).environment(\.managedObjectContext, context)
+            //EditCheckoutView(recipient: mailbox, packageType: .unarchived).environment(\.managedObjectContext, context)
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

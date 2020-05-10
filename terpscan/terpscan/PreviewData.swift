@@ -47,7 +47,7 @@ extension UIImage {
 public func initReceipt(in context: NSManagedObjectContext, for packages: [Package]) -> Receipt {
     let receipt = Receipt.init(context: context)
     receipt.signer = "Regis Boykin"
-    receipt.signature = UIImage.imageWithSize(size: CGSize(width: 1000, height: 200))?.jpegData(compressionQuality: 1.0)
+    receipt.signature = UIImage.imageWithSize(size: CGSize(width: 400, height: 200))?.jpegData(compressionQuality: 1.0)
     receipt.timestamp = Date()
     receipt.packages = NSSet.init(array: packages)
     return receipt

@@ -99,7 +99,7 @@ struct AddPackageView: View {
                     }.disabled(disableDone)
             )
         }.navigationViewStyle(StackNavigationViewStyle())
-            .accentColor(primaryColor)
+            .accentColor(ACCENT_COLOR)
     }
     
     func handleScan(result: Result<String, CodeScannerView.ScanError>) {

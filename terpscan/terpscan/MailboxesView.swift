@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public let primaryColor = Color(#colorLiteral(red: 0.8884014487, green: 0.1081022099, blue: 0.1330436766, alpha: 1))
+public let ACCENT_COLOR = Color(#colorLiteral(red: 0.8884014487, green: 0.1081022099, blue: 0.1330436766, alpha: 1))
 
 struct MailboxesView: View {
     @FetchRequest(
@@ -49,6 +49,7 @@ struct MailboxesView: View {
                             Text("Archive").fontWeight(.bold)
                         }
                     }
+                    // FIXME: A little bit hacky to get alphabetical sections
                     ForEach(self.groupby(self.mailboxes), id: \.self) { (group: [Mailbox]) in
                         Section(header: Text(String(group[0].lastName!.first!))) {
                             ForEach(group, id: \.self) { mailbox in
@@ -80,11 +81,11 @@ struct MailboxesView: View {
                             AddMailboxView(isPresented: self.$showingAddMailbox)
                                 // FIXME: Workaround to package adding in modal with managedObjectContext
                                 .environment(\.managedObjectContext, self.viewContext)
-                                .accentColor(primaryColor)
+                                .accentColor(ACCENT_COLOR)
                         }
                 )
             }.navigationViewStyle(DoubleColumnNavigationViewStyle())
-                .accentColor(primaryColor)
+                .accentColor(ACCENT_COLOR)
                 .padding(.leading, geo.size.height > geo.size.width ? 1 : 0)
         }
     }
