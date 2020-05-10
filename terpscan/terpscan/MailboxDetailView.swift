@@ -19,6 +19,14 @@ extension String {
 struct MailboxDetailView: View {
     @ObservedObject var mailbox: Mailbox
     
+    private var numOfUnarchived: Int {
+        if let packages = mailbox.packages?.allObjects as? [Package] {
+            return packages.filter({p in p.receipt == nil}).count
+        } else {
+            return 0
+        }
+    }
+    
     @Environment(\.managedObjectContext)
     var viewContext
     @Environment(\.editMode)
@@ -76,10 +84,10 @@ struct MailboxDetailView: View {
                 }
             }
             Divider()
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Text("packages").font(.subheadline).fontWeight(.light)
-                    Text("(\(mailbox.packages?.count ?? 0))").font(.subheadline).fontWeight(.heavy)
+                    Text("(\(numOfUnarchived))").font(.subheadline).fontWeight(.heavy)
                     Spacer()
                     NavigationLink(
                         destination: ArchiveView(recipient: mailbox).environment(\.managedObjectContext, viewContext)
