@@ -90,7 +90,7 @@ struct MailboxDetailView: View {
                         }
                     }
                 }
-                EditCheckoutView(recipient: mailbox)
+                EditCheckoutView(recipient: mailbox, packageType: .unarchived)
             }
         }.padding(15)
             .navigationBarTitle("\(mailbox.firstName!) \(mailbox.lastName!)")

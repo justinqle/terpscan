@@ -25,7 +25,9 @@
 		32C8DA902421D3F600D49967 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 32C8DA8F2421D3F600D49967 /* CodeScanner */; };
 		32C8DA962421F47F00D49967 /* AddPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA952421F47F00D49967 /* AddPackageView.swift */; };
 		32C8DA982421F9C600D49967 /* AddMailboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA972421F9C600D49967 /* AddMailboxView.swift */; };
+		32D8C0E8246782FA0080DD8C /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8C0E7246782FA0080DD8C /* SignView.swift */; };
 		32F3223A2465CA5600BC2E8F /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F322392465CA5600BC2E8F /* CheckOutView.swift */; };
+		32F322402467635700BC2E8F /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F3223F2467635700BC2E8F /* Receipt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +71,9 @@
 		32C8DA77242171E600D49967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C8DA952421F47F00D49967 /* AddPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPackageView.swift; sourceTree = "<group>"; };
 		32C8DA972421F9C600D49967 /* AddMailboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMailboxView.swift; sourceTree = "<group>"; };
+		32D8C0E7246782FA0080DD8C /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
 		32F322392465CA5600BC2E8F /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
+		32F3223F2467635700BC2E8F /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,11 +132,13 @@
 				32284E942464AAD6004E81E5 /* MailView.swift */,
 				3214F00A2426B4F4004C2410 /* PackagesView.swift */,
 				32F322392465CA5600BC2E8F /* CheckOutView.swift */,
+				32D8C0E7246782FA0080DD8C /* SignView.swift */,
 				3214F00C2426C3AA004C2410 /* PackageDetailView.swift */,
 				32C8DA972421F9C600D49967 /* AddMailboxView.swift */,
 				32C8DA952421F47F00D49967 /* AddPackageView.swift */,
 				3219860324234F2600F5D410 /* Mailbox.swift */,
 				32C8DA55242171E400D49967 /* Package.swift */,
+				32F3223F2467635700BC2E8F /* Receipt.swift */,
 				32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */,
 				32C8DA59242171E600D49967 /* Assets.xcassets */,
 				32C8DA61242171E600D49967 /* Info.plist */,
@@ -307,9 +313,11 @@
 			files = (
 				3214F00D2426C3AA004C2410 /* PackageDetailView.swift in Sources */,
 				3219860424234F2600F5D410 /* Mailbox.swift in Sources */,
+				32F322402467635700BC2E8F /* Receipt.swift in Sources */,
 				32C8DA56242171E400D49967 /* Package.swift in Sources */,
 				32C8DA962421F47F00D49967 /* AddPackageView.swift in Sources */,
 				3214F00B2426B4F4004C2410 /* PackagesView.swift in Sources */,
+				32D8C0E8246782FA0080DD8C /* SignView.swift in Sources */,
 				3219860624240A7200F5D410 /* MailboxDetailView.swift in Sources */,
 				32C8DA4F242171E300D49967 /* AppDelegate.swift in Sources */,
 				32284E952464AAD6004E81E5 /* MailView.swift in Sources */,

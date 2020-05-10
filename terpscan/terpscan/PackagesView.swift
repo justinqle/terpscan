@@ -14,7 +14,7 @@ struct AllInboxesView: View {
     @State private var showingAddPackage = false
     
     var body: some View {
-        EditCheckoutView(recipient: nil)
+        EditCheckoutView(recipient: nil, packageType: .unarchived)
             .navigationBarTitle(Text("All Inboxes"), displayMode: .large)
             .navigationBarItems(
                 trailing: Button(
@@ -35,26 +35,29 @@ struct AllInboxesView: View {
 
 struct ArchiveView: View {
     var body: some View {
-        PackagesView(recipient: nil, archivedOnly: true, selectedPackages: nil)
+        PackagesView(recipient: nil, packageType: .archived, selectedPackages: nil)
             .navigationBarTitle(Text("Archive"), displayMode: .large)
     }
 }
 
 struct EditCheckoutView: View {
+    @Environment(\.managedObjectContext) var viewContext
     @Environment(\.editMode) var mode
     
     @State private var showingCheckOutPackage = false
     @State private var selectedPackages = Set<Package>()
     
     private var recipient: Mailbox?
+    private var packageType: PackageType
     
-    init(recipient: Mailbox?) {
+    init(recipient: Mailbox?, packageType: PackageType) {
         self.recipient = recipient
+        self.packageType = packageType
     }
     
     var body: some View {
         VStack {
-            PackagesView(recipient: recipient, archivedOnly: false, selectedPackages: $selectedPackages)
+            PackagesView(recipient: recipient, packageType: packageType, selectedPackages: $selectedPackages)
             Spacer()
             HStack {
                 if self.mode?.wrappedValue == .active {
@@ -66,8 +69,9 @@ struct EditCheckoutView: View {
                     }
                     .disabled(selectedPackages.isEmpty)
                     .sheet(isPresented: $showingCheckOutPackage) {
-                        CheckOutView(isPresented: self.$showingCheckOutPackage)
+                        CheckOutView(isPresented: self.$showingCheckOutPackage, packages: self.$selectedPackages)
                             .accentColor(primaryColor)
+                            .environment(\.managedObjectContext, self.viewContext)
                     }
                 }
                 Spacer()
@@ -115,19 +119,28 @@ struct PackageCellView: View {
     }
 }
 
+enum PackageType {
+    case all, unarchived, archived
+}
+
 struct PackagesView: View {
     private var packagesRequest : FetchRequest<Package>
     private var packages: FetchedResults<Package>{packagesRequest.wrappedValue}
     
     private var selectedPackages: Binding<Set<Package>>?
     
-    init(recipient: Mailbox?, archivedOnly: Bool, selectedPackages: Binding<Set<Package>>?) {
+    init(recipient: Mailbox?, packageType: PackageType, selectedPackages: Binding<Set<Package>>?) {
         let andPredicate: NSCompoundPredicate
         var subpredicates: [NSPredicate] = []
         if let recipient = recipient {
             subpredicates.append(NSPredicate(format: "%K == %@", #keyPath(Package.recipient), recipient))
         }
-        if archivedOnly {
+        switch packageType {
+        case .all:
+            break
+        case .unarchived:
+            subpredicates.append(NSPredicate(format: "%K == nil", #keyPath(Package.receipt)))
+        case .archived:
             subpredicates.append(NSPredicate(format: "%K != nil", #keyPath(Package.receipt)))
         }
         andPredicate = NSCompoundPredicate(type: .and, subpredicates: subpredicates)
@@ -165,6 +178,6 @@ struct PackagesView_Previews: PreviewProvider {
             AllInboxesView().environment(\.managedObjectContext, context)
             //ArchiveView().environment(\.managedObjectContext, context)
             //EditCheckoutView(recipient: mailbox).environment(\.managedObjectContext, context)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

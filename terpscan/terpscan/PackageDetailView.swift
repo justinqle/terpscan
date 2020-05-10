@@ -42,6 +42,9 @@ struct PackageDetailView: View {
                 Divider()
             }
             Text("Received \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
+            Divider()
+            Image(uiImage: UIImage(data: (package.receipt?.signature!)!, scale: 1.0)!).border(Color(UIColor.secondarySystemBackground), width: 5).padding(.all)
+            Text("Checked out \(package.timestamp!, formatter: dateFormatter)").font(.footnote)
             Spacer()
         }.padding(15)
             .navigationBarTitle("# \(package.trackingNumber!)")
