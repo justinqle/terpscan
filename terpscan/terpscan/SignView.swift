@@ -10,16 +10,13 @@ import SwiftUI
 import PencilKit
 
 struct SignView: View {
-    @Environment(\.managedObjectContext)
-    var viewContext
-    @Binding
-    var isPresented: Bool
-    @Binding
-    var packages: Set<Package>
-    @State
-    private var canvasView = PKCanvasView()
-    @State
-    var signer: String = ""
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @Binding var isPresented: Bool
+    @Binding var packages: Set<Package>
+    
+    @State private var canvasView = PKCanvasView()
+    @State private var signer: String = ""
     
     var body: some View {
         VStack(spacing: 25) {
@@ -39,7 +36,7 @@ struct SignView: View {
                     Receipt.create(in: self.viewContext, signer: self.signer, signature: image, packages: self.packages)
             }) {
                 Text("Finish")
-            }
+            }.disabled(signer.isEmpty)
         )
     }
 }
@@ -49,7 +46,7 @@ struct SignatureView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> PKCanvasView {
         self.canvasView.backgroundColor = UIColor.white
-        self.canvasView.tool = PKInkingTool(.pen, color: UIColor(red: 1, green: 1, blue: 1, alpha: 1), width: 10)
+        self.canvasView.tool = PKInkingTool(.pen, color: UIColor.red, width: 10)
         return canvasView
     }
     
