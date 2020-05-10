@@ -45,6 +45,7 @@ struct AddPackageView: View {
     init(isPresented: Binding<Bool>, recipient: Mailbox?) {
         _isPresented = isPresented
         _selectedRecipient = State.init(initialValue: recipient)
+        UITextField.appearance().clearButtonMode = .always
     }
     
     var body: some View {
