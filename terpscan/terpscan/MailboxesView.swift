@@ -42,7 +42,7 @@ struct MailboxesView: View {
                         }
                     }
                     NavigationLink(
-                        destination: ArchiveView()
+                        destination: ArchiveView(recipient: nil)
                     ) {
                         HStack {
                             Image(systemName: "archivebox").imageScale(.large)

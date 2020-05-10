@@ -34,8 +34,14 @@ struct AllInboxesView: View {
 }
 
 struct ArchiveView: View {
+    private var recipient: Mailbox?
+    
+    init(recipient: Mailbox?) {
+        self.recipient = recipient
+    }
+    
     var body: some View {
-        PackagesView(recipient: nil, packageType: .archived, selectedPackages: nil)
+        PackagesView(recipient: recipient, packageType: .archived, selectedPackages: nil)
             .navigationBarTitle(Text("Archive"), displayMode: .large)
     }
 }

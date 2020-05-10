@@ -82,7 +82,7 @@ struct MailboxDetailView: View {
                     Text("(\(mailbox.packages?.count ?? 0))").font(.subheadline).fontWeight(.heavy)
                     Spacer()
                     NavigationLink(
-                        destination: ArchiveView().environment(\.managedObjectContext, viewContext)
+                        destination: ArchiveView(recipient: mailbox).environment(\.managedObjectContext, viewContext)
                     ) {
                         HStack {
                             Text("View Archive")
