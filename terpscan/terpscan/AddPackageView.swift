@@ -10,11 +10,11 @@ import SwiftUI
 import CodeScanner
 
 extension String {
-    // Allows substringing through two indices
+    // Allows substringing through two indices (inclusive:exclusive)
     func subString(from: Int, to: Int) -> String {
         let startIndex = self.index(self.startIndex, offsetBy: from)
         let endIndex = self.index(self.startIndex, offsetBy: to)
-        return String(self[startIndex...endIndex])
+        return String(self[startIndex..<endIndex])
     }
     var isAlphanumeric: Bool {
         return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
@@ -45,7 +45,7 @@ struct AddPackageView: View {
     init(isPresented: Binding<Bool>, recipient: Mailbox?) {
         _isPresented = isPresented
         _selectedRecipient = State.init(initialValue: recipient)
-        UITextField.appearance().clearButtonMode = .always
+        UITextField.appearance().clearButtonMode = .whileEditing
     }
     
     var body: some View {
@@ -71,7 +71,7 @@ struct AddPackageView: View {
                         }) {
                             Image(systemName: "barcode.viewfinder").imageScale(.large)
                         }.sheet(isPresented: $isShowingScanner) {
-                            CodeScannerView(codeTypes: [.code128, .pdf417], simulatedData: "1Z12345E1512345676", completion: self.handleScan)
+                            CodeScannerView(codeTypes: [.code128], simulatedData: "1Z12345E1512345676", completion: self.handleScan)
                         }
                     }
                     Picker(selection: $selectedCarrier, label: Text("Carrier")) {
@@ -106,17 +106,14 @@ struct AddPackageView: View {
     func handleScan(result: Result<String, CodeScannerView.ScanError>) {
         self.isShowingScanner = false
         switch result {
-        case .success(var code):
-            print(code)
-            // Further parse barcode if needed
-            code = code.filter { String($0).isAlphanumeric }
-            if (code.hasPrefix("0102")) { // FedEx PDF417 barcode
-                self.trackingNumber = code.subString(from: 14, to: 26)
-            } else if code.hasPrefix("96")  { // Also FedEx
-                self.trackingNumber = code.subString(from: code.count-12, to: code.count-1)
-            } else if (code.hasPrefix("420") && code.count > 8) { // USPS
-                self.trackingNumber = code.subString(from: 8, to: code.count-1)
-            } else {
+        case .success(var code): // Possible carriers: UPS, FedEx, USPS, Amazon, DHL, Other
+            code = code.filter { String($0).isAlphanumeric } // Filter out weird chars
+            // Parse barcode for tracking number if necessary
+            if (code.hasPrefix("420")) { // UPS
+                self.trackingNumber = code.subString(from: 8, to: code.count)
+            } else if (code.count == 34) { // FedEx
+                self.trackingNumber = code.subString(from: 22, to: code.count)
+            } else { // Other
                 self.trackingNumber = code
             }
             // Set carrier picker
@@ -126,9 +123,9 @@ struct AddPackageView: View {
                 selectedCarrier = 1
             } else if self.trackingNumber.hasPrefix("9") { // USPS
                 selectedCarrier = 2
-            } else if self.trackingNumber.hasPrefix("FBA") { // Amazon
+            } else if self.trackingNumber.hasPrefix("TBA") { // Amazon
                 selectedCarrier = 3
-            } else {
+            } else { // Other
                 selectedCarrier = 5
             }
         case .failure(let error):
