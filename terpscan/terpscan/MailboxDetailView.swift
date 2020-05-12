@@ -33,10 +33,9 @@ public func numOfUnarchived(from recipient: Mailbox?) -> Int {
 struct MailboxDetailView: View {
     @ObservedObject var mailbox: Mailbox
     
-    @Environment(\.managedObjectContext)
-    var viewContext
-    @Environment(\.editMode)
-    var mode
+    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.editMode) var mode
+    @Environment(\.presentationMode) var presentation
     
     @State var showingAddPackage = false
     

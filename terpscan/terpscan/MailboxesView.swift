@@ -13,11 +13,12 @@ public let ACCENT_COLOR = Color(#colorLiteral(red: 0.8884014487, green: 0.108102
 struct MailboxesView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Mailbox.lastName, ascending: true)],
-        animation: .default)
+        animation: .default
+    )
     var mailboxes: FetchedResults<Mailbox>
     
-    @Environment(\.managedObjectContext)
-    var viewContext
+    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var presentation
     
     @State private var showingAddMailbox = false
     
