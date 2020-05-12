@@ -61,7 +61,7 @@ struct AddPackageView: View {
                         }
                     }
                 }
-                Section {
+                Section(footer: Text("Note: Double-check tracking number if using barcode scanner")) {
                     HStack {
                         TextField("Tracking number", text: $trackingNumber)
                         Spacer()
