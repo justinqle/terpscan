@@ -25,7 +25,7 @@ struct MailboxesView: View {
     // Group Mailboxes by first letter of last name
     private func groupby(_ result : FetchedResults<Mailbox>) -> [[Mailbox]] {
         return Dictionary(grouping: result) { (element : Mailbox) in
-            element.lastName!.first!
+            element.lastName!.first!.uppercased()
         }.values.map{$0}.sorted(by: { c1, c2 in return c1[0].lastName! < c2[0].lastName! })
     }
     
