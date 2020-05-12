@@ -113,14 +113,14 @@ struct AddPackageView: View {
                 self.trackingNumber = code.subString(from: 8, to: code.count)
             } else if (code.count == 34) { // FedEx
                 self.trackingNumber = code.subString(from: 22, to: code.count)
+                selectedCarrier = 1
+                return
             } else { // Other
                 self.trackingNumber = code
             }
             // Set carrier picker
             if self.trackingNumber.hasPrefix("1Z") { // UPS
                 selectedCarrier = 0
-            } else if self.trackingNumber.hasPrefix("7") { // FedEx
-                selectedCarrier = 1
             } else if self.trackingNumber.hasPrefix("9") { // USPS
                 selectedCarrier = 2
             } else if self.trackingNumber.hasPrefix("TBA") { // Amazon
