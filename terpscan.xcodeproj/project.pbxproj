@@ -13,6 +13,7 @@
 		3219860424234F2600F5D410 /* Mailbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219860324234F2600F5D410 /* Mailbox.swift */; };
 		3219860624240A7200F5D410 /* MailboxDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219860524240A7200F5D410 /* MailboxDetailView.swift */; };
 		32284E952464AAD6004E81E5 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32284E942464AAD6004E81E5 /* MailView.swift */; };
+		32353C7224AC253F00E2AAE4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32353C7124AC253F00E2AAE4 /* CloudKit.framework */; };
 		32C8DA4F242171E300D49967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA4E242171E300D49967 /* AppDelegate.swift */; };
 		32C8DA52242171E300D49967 /* terpscan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA50242171E300D49967 /* terpscan.xcdatamodeld */; };
 		32C8DA54242171E300D49967 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8DA53242171E300D49967 /* SceneDelegate.swift */; };
@@ -55,6 +56,8 @@
 		3219860324234F2600F5D410 /* Mailbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mailbox.swift; sourceTree = "<group>"; };
 		3219860524240A7200F5D410 /* MailboxDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailboxDetailView.swift; sourceTree = "<group>"; };
 		32284E942464AAD6004E81E5 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		32353C6F24AC253700E2AAE4 /* terpscan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = terpscan.entitlements; sourceTree = "<group>"; };
+		32353C7124AC253F00E2AAE4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		32C8DA4B242171E300D49967 /* terpscan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = terpscan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C8DA4E242171E300D49967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C8DA51242171E300D49967 /* terpscan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = terpscan.xcdatamodel; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32C8DA902421D3F600D49967 /* CodeScanner in Frameworks */,
+				32353C7224AC253F00E2AAE4 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32353C7024AC253F00E2AAE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32353C7124AC253F00E2AAE4 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		32C8DA42242171E300D49967 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +123,7 @@
 				32C8DA69242171E600D49967 /* terpscanTests */,
 				32C8DA74242171E600D49967 /* terpscanUITests */,
 				32C8DA4C242171E300D49967 /* Products */,
+				32353C7024AC253F00E2AAE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +140,7 @@
 		32C8DA4D242171E300D49967 /* terpscan */ = {
 			isa = PBXGroup;
 			children = (
+				32353C6F24AC253700E2AAE4 /* terpscan.entitlements */,
 				32C8DA4E242171E300D49967 /* AppDelegate.swift */,
 				32C8DA53242171E300D49967 /* SceneDelegate.swift */,
 				32D8C0E924678A200080DD8C /* PreviewData.swift */,
@@ -494,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = terpscan/terpscan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"terpscan/Preview Content\"";
 				DEVELOPMENT_TEAM = HS7YUD2Q2D;
@@ -514,6 +529,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = terpscan/terpscan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"terpscan/Preview Content\"";
 				DEVELOPMENT_TEAM = HS7YUD2Q2D;

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F96" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Mailbox" representedClassName="Mailbox" codeGenerationType="class">
         <attribute name="buildingCode" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="firstName" attributeType="String"/>
-        <attribute name="lastName" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <attribute name="roomNumber" optional="YES" attributeType="String"/>
-        <relationship name="packages" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Package" inverseName="recipient" inverseEntity="Package"/>
+        <relationship name="packages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Package" inverseName="recipient" inverseEntity="Package"/>
         <userInfo/>
     </entity>
     <entity name="Package" representedClassName="Package" codeGenerationType="class">
-        <attribute name="carrier" attributeType="String"/>
-        <attribute name="timestamp" attributeType="Date"/>
-        <attribute name="trackingNumber" attributeType="String"/>
-        <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Receipt" inverseName="packages" inverseEntity="Receipt"/>
-        <relationship name="recipient" maxCount="1" deletionRule="Nullify" destinationEntity="Mailbox" inverseName="packages" inverseEntity="Mailbox"/>
+        <attribute name="carrier" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date"/>
+        <attribute name="trackingNumber" optional="YES" attributeType="String"/>
+        <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Receipt" inverseName="packages" inverseEntity="Receipt"/>
+        <relationship name="recipient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mailbox" inverseName="packages" inverseEntity="Mailbox"/>
         <userInfo/>
     </entity>
     <entity name="Receipt" representedClassName="Receipt" codeGenerationType="class">
-        <attribute name="signature" attributeType="Binary"/>
-        <attribute name="signer" attributeType="String"/>
-        <attribute name="timestamp" attributeType="Date"/>
-        <relationship name="packages" toMany="YES" deletionRule="Deny" destinationEntity="Package" inverseName="receipt" inverseEntity="Package"/>
+        <attribute name="signature" optional="YES" attributeType="Binary"/>
+        <attribute name="signer" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date"/>
+        <relationship name="packages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Package" inverseName="receipt" inverseEntity="Package"/>
         <userInfo/>
     </entity>
     <elements>
