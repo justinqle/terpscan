@@ -88,11 +88,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("Could not retrieve a persistent store description.")
         }
-
-        // initialize the CloudKit schema
-        let id = "iCloud.edu.umd.jle12345.terpscan"
-        let options = NSPersistentCloudKitContainerOptions(containerIdentifier: id)
-        description.cloudKitContainerOptions = options
+        
+        let publicStoreURL = description.url!.deletingLastPathComponent().appendingPathComponent("terpscan-public.sqlite")
+        let identifier = description.cloudKitContainerOptions!.containerIdentifier
+        
+        let publicDescription = NSPersistentStoreDescription(url: publicStoreURL)
+        publicDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        publicDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        
+        var publicOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: identifier)
+        if #available(iOS 14.0, *) {
+            publicOptions.databaseScope = .public
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        publicDescription.cloudKitContainerOptions = publicOptions
+        container.persistentStoreDescriptions = [publicDescription]
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
