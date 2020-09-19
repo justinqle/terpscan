@@ -97,11 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         publicDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         
         var publicOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: identifier)
-        if #available(iOS 14.0, *) {
-            publicOptions.databaseScope = .public
-        } else {
-            // Fallback on earlier versions
-        }
+        publicOptions.databaseScope = .public
         
         publicDescription.cloudKitContainerOptions = publicOptions
         container.persistentStoreDescriptions = [publicDescription]
